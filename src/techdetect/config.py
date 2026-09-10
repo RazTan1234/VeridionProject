@@ -31,3 +31,13 @@ DNS_RECORD_TYPES = ("A", "MX", "TXT", "NS", "CNAME")
 
 PARKED_BODY_LIMIT = 2500
 EMPTY_BODY_LIMIT = 200
+
+TRANSIENT_ERRORS = {
+      "ConnectTimeout",
+      "ReadTimeout",
+      "WriteTimeout",
+      "PoolTimeout",
+      "RemoteProtocolError",
+  }
+
+RETRYABLE_STATUS = {429, 502, 503, 504}

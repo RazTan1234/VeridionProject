@@ -48,6 +48,7 @@ class Attempt(BaseModel):
     error_type: str | None = None
     error_message: str | None = None
     elapsed_seconds: float = 0.0
+    tls_related: bool = False
 
 
 class FetchRecord(BaseModel):
