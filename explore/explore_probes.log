@@ -1,0 +1,459 @@
+WordPress candidates: 61
+[  1/61] somalidisablesupport.com                   OK  ns=23  routes=541
+[  2/61] szentkristofudvarhaz.hu                    no  ns=0   routes=0
+[  3/61] xn--kleoghvidevareservice-qfc.dk           OK  ns=5   routes=83
+[  4/61] cytofastmed.com                            OK  ns=11  routes=141
+[  5/61] gutendorf.ru                               OK  ns=17  routes=535
+[  6/61] katesworldtravel.com                       OK  ns=47  routes=534
+[  7/61] clotting-guide.online                      OK  ns=16  routes=473
+[  8/61] 38inspect.com                              OK  ns=10  routes=220
+[  9/61] newbeaverborough.org                       OK  ns=19  routes=320
+[ 10/61] doringpoort.com                            OK  ns=8   routes=200
+[ 11/61] fsbwyoming.com                             OK  ns=45  routes=829
+[ 12/61] msc-manching.de                            OK  ns=5   routes=122
+[ 13/61] coastwidemechanicalcentralcoast.com.au     OK  ns=16  routes=232
+[ 14/61] jobresourcecentre.com                      OK  ns=16  routes=306
+[ 15/61] velvety.eu                                 OK  ns=20  routes=386
+[ 16/61] rionecontrastanga.net                      OK  ns=6   routes=129
+[ 17/61] empresasori.com                            no  ns=0   routes=0
+[ 18/61] centreconsiliereavort.ro                   OK  ns=6   routes=142
+[ 19/61] infoaboutnetwork.com                       no  ns=0   routes=0
+[ 20/61] passwordstore.it                           OK  ns=14  routes=292
+[ 21/61] avocatalinamanciu.ro                       OK  ns=13  routes=286
+[ 22/61] dssfla.com                                 OK  ns=20  routes=565
+[ 23/61] weducars.co.za                             OK  ns=26  routes=790
+[ 24/61] 4stonebuildings.com                        OK  ns=17  routes=445
+[ 25/61] maniaupiekszania.pl                        OK  ns=22  routes=283
+[ 26/61] sprucemeadowsmd.com                        OK  ns=16  routes=230
+[ 27/61] arenaskolor.se                             OK  ns=14  routes=292
+[ 28/61] boken.ch                                   OK  ns=7   routes=221
+[ 29/61] skywayrestaurants.net                      OK  ns=20  routes=303
+[ 30/61] 2020wealthadvisory.com                     OK  ns=20  routes=299
+[ 31/61] itsolutions24.pl                           OK  ns=5   routes=135
+[ 32/61] aaice.net                                  OK  ns=22  routes=452
+[ 33/61] handycars.com                              OK  ns=12  routes=167
+[ 34/61] alabamabuildingcontractor.com              OK  ns=6   routes=152
+[ 35/61] skywardspeech.com.au                       OK  ns=12  routes=259
+[ 36/61] buchhaltungsservice-koenig.de              OK  ns=13  routes=224
+[ 37/61] solvos.nl                                  OK  ns=35  routes=559
+[ 38/61] disinfestazioniepiscine.it                 OK  ns=17  routes=296
+[ 39/61] lscms.org                                  OK  ns=22  routes=352
+[ 40/61] 3dwealthadvisory.com                       OK  ns=12  routes=226
+[ 41/61] ferrateoxidant.com                         OK  ns=8   routes=155
+[ 42/61] oakwell.vet                                OK  ns=15  routes=262
+[ 43/61] mysterion.hr                               OK  ns=7   routes=71
+[ 44/61] maiquotes.net                              no  ns=0   routes=0
+[ 45/61] dorpsbelangen.nu                           OK  ns=7   routes=175
+[ 46/61] hoffmaninstitute.co.uk                     OK  ns=26  routes=806
+[ 47/61] nicholsonchiro.com                         OK  ns=7   routes=195
+[ 48/61] xn--jobvrkstedet-9cb.nu                    no  ns=0   routes=0
+[ 49/61] 11thhourracing.org                         OK  ns=17  routes=263
+[ 50/61] bata.edu.hu                                OK  ns=8   routes=144
+[ 51/61] labdemo.com                                OK  ns=10  routes=224
+[ 52/61] koniczynka.info.pl                         OK  ns=28  routes=770
+[ 53/61] 2agateway.com                              OK  ns=14  routes=319
+[ 54/61] ledestjernenstu.dk                         no  ns=0   routes=0
+[ 55/61] tamcconstruction.net                       OK  ns=21  routes=548
+[ 56/61] deepseass.com                              OK  ns=14  routes=281
+[ 57/61] shapirolawfirm.com                         no  ns=0   routes=0
+[ 58/61] sindacatobadanti.it                        OK  ns=19  routes=336
+[ 59/61] unitedveterinaryservice.com                OK  ns=6   routes=141
+[ 60/61] joburgheritage.org.za                      OK  ns=34  routes=869
+[ 61/61] bfnelson.it                                OK  ns=8   routes=228
+
+robots.txt targets: 192
+  ...20/192
+  ...40/192
+  ...60/192
+  ...80/192
+  ...100/192
+  ...120/192
+  ...140/192
+  ...160/192
+  ...180/192
+
+==========================================================================================
+WP-JSON: 54/61 responded with usable JSON
+
+FAILURE REASONS
+    2  ConnectError: [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify fail
+    2  status 454
+    1  status 404
+    1  ReadTimeout: The read operation timed out
+    1  not json: JSONDecodeError
+
+DISTINCT NAMESPACES FOUND: 271
+   54  oembed/1.0
+   54  wp/v2
+   52  wp-block-editor/v1
+   52  wp-site-health/v1
+   42  wp-abilities/v1
+   25  yoast/v1
+   18  contact-form-7/v1
+   17  elementor/v1
+   12  elementor-ai/v1
+   12  akismet/v1
+   12  elementor/v1/documents
+   10  elementor/v1/feedback
+   10  elementor-one/v1
+   10  wordfence/v1
+   10  elementor-pro/v1
+   10  google-site-kit/v1
+    9  jetpack/v4
+    9  wordfence-login-security/v1
+    8  redirection/v1
+    6  mcp
+    6  nps-survey/v1
+    5  wc-analytics
+    5  wc-telemetry
+    5  wc/v1
+    5  wc/store/v1
+    5  wc/store
+    5  wc-admin
+    5  wc/v2
+    5  wc/v3
+    5  wpforms/v1
+    5  divi/v1
+    5  duplicate-post/v1
+    4  wpcom/v2
+    4  jetpack/v4/blaze
+    4  jetpack/v4/stats-app
+    4  jetpack-boost/v1
+    4  my-jetpack/v1
+    4  monsterinsights/v1
+    4  jetpack/v4/explat
+    4  wpcom/v3
+    4  jetpack/v4/blaze-app
+    4  elementor-hello-elementor/v1
+    4  rankmath/v1/in
+    4  ithemes-security/rpc
+    4  rankmath/v1/ca
+    4  rankmath/v1
+    4  ithemes-security/v1
+    4  rankmath/v1/an
+    4  objectcache/v1
+    4  litespeed/v1
+    4  wccom-site/v3
+    4  wc/private
+    4  wc-admin-email
+    3  astra/v1
+    3  wp-site-designer/v1
+    3  wpaas/v1
+    3  image-optimizer/v1
+    3  two-factor
+    3  litespeed/v3
+    3  envato-elements/v2
+    3  webp-converter/v1
+    3  ai1wm/v1
+    3  post-smtp/v1
+    3  frm-admin/v1
+    2  yoast/v1/myyoast
+    2  burst/v1
+    2  joinchat/v1
+    2  ngg/v1
+    2  pll/v1
+    2  simple-history/v1
+    2  jet-elements-api/v1
+    2  rankmath/v1/status
+    2  croco/v1
+    2  jet-tabs-api/v1
+    2  gdl/v1
+    2  rankmath/v1/setupWizard
+    2  jet-engine/v2
+    2  jet-engine/v1
+    2  jet-theme-core-api/v2
+    2  rankmath/v1/ai-visibility
+    2  code-snippets/v1
+    2  cookieyes/v1
+    2  filebird/v1
+    2  aios/v1/onboarding
+    2  cky/v1
+    2  filebird/public/v1
+    2  jetpack/v4/import
+    2  wp-super-cache/v1
+    2  complianz/v1
+    2  zipwp/v1
+    2  elementskit/v1/my-template
+    2  elementskit/v1/layout-manager-api
+    2  elementskit/v1/ajaxselect2
+    2  elementskit/v1/widget-builder
+    2  gutenberg-templates/v1
+    2  elementskit/v1/widget/mailchimp
+    2  elementskit/v1/megamenu
+    2  elementskit/v1/dynamic-content
+    2  llar/v1
+    2  bsf-core/v1
+    2  coblocks
+    2  duplicator/v1
+    2  wp-2fa-passkeys/v1
+    2  wp-2fa-methods/v1
+    2  wp-toolkit/api
+    2  wc/pos/v1/catalog
+    2  regenerate-thumbnails/v1
+    2  popup-maker/v2
+    2  pum/v1
+    2  post-smtp/v2
+    2  psd/v1
+    1  omapp/v1
+    1  wp-statistics/v2
+    1  wccom-site/v1
+    1  wccom-site/v2
+    1  instawp-connect/v2/manage
+    1  newfold-installer/v1
+    1  instawp-connect/v1
+    1  nfd-help-center/v1
+    1  newfold-marketplace/v1
+    1  instawp-connect/v3
+    1  instawp-connect/v2/woocommerce
+    1  bluehost/v1
+    1  newfold-features/v1
+    1  newfold-solutions/v1
+    1  instawp-connect/v2/content
+    1  nfd-ai-chat/v1
+    1  newfold-adam/v1
+    1  newfold-ecommerce/v1
+    1  blu
+    1  newfold-staging/v1
+    1  newfold-data/v1
+    1  newfold-ctb/v2
+    1  newfold-notifications/v1
+    1  newfold-multi-search/v1
+    1  newfold-coming-soon/v1
+    1  newfold-insights/v1
+    1  nfd-editor-chat/v1
+    1  newfold-facebook/v1
+    1  instawp-connect/v2
+    1  newfold-sso/v1
+    1  nfd-wonder-blocks/v1
+    1  newfold-next-steps/v2
+    1  nfd-agents/chat/v1
+    1  newfold-ai/v1
+    1  forminator/v1
+    1  wpmudev-dashboard/v1
+    1  wp-review-slider-pro/v1
+    1  fgwp/v1
+    1  mec/v1
+    1  nexcess-mapps/v1
+    1  liquidweb/harbor/v1
+    1  dittyeditor/v1
+    1  jet-menu-api/v2
+    1  rankmath/v1/link-genius
+    1  jet-popup/v2
+    1  gtm4wp/v2
+    1  rankmath-marketplace/v1
+    1  suremails/v1
+    1  notificationx/v1
+    1  cmb2/v1
+    1  directorist/v1
+    1  redux/descriptors/v1
+    1  flywheel/v1
+    1  notificationx
+    1  wpml/ate/v1
+    1  wpml/tm/v1
+    1  wpml/v1
+    1  otgs/installer/v1
+    1  cf7mls/v1
+    1  wpml/st/v1
+    1  jupiterx-license
+    1  metform/v1/entries
+    1  metform/v1/forms
+    1  everest-forms/v1
+    1  sliderrevolution
+    1  checkview/v1
+    1  pods/v1
+    1  gwiz/v1
+    1  gravity-pdf/v1
+    1  relevanssi/v1
+    1  gf/v2
+    1  uag/v1
+    1  spectra/v1
+    1  zip_ai
+    1  kb-getresponse/v1
+    1  kb-design-library/v1
+    1  edac/v1
+    1  kb-vector/v1
+    1  accessibility-checker/v1
+    1  kb-fluentcrm/v1
+    1  kb-lottieanimation/v1
+    1  kb-image-picker/v1
+    1  kb-mailerlite/v1
+    1  kbp/v1
+    1  matomo/v1
+    1  one-onboarding/v1
+    1  Stratum/v1
+    1  zipwp-images/v1
+    1  getting-started/v1
+    1  elementor-hosting/v1
+    1  mailpoet/v1
+    1  leadin/v1
+    1  userfeedback/v1
+    1  aioseo/v1
+    1  vehicles/v1
+    1  bhi/v1
+    1  nexus-runtime/v1
+    1  dealer/v1
+    1  dv-tsd/v1
+    1  nexus/v1
+    1  siteground-settings/v1
+    1  awb
+    1  awb/instagram
+    1  siteground-optimizer/v1
+    1  quadlayers/instagram
+    1  real-utils/v1
+    1  real-cookie-banner/v1
+    1  real-product-manager-wp-client/v1
+    1  real-queue/v1
+    1  jet-blocks-api/v1
+    1  elementskit
+    1  wp-umbrella/v1
+    1  omgf/v1
+    1  elementskit/v1
+    1  uavc/v1
+    1  ultimate-vc/v1
+    1  wp-all-import/v1
+    1  backwpup/v2
+    1  pmpro/v1
+    1  KirkiComponentLibrary/v1
+    1  wp-optimize/v1/onboarding
+    1  backwpup/v1
+    1  essential-blocks/v1
+    1  kirki/v1
+    1  koko-analytics/v1
+    1  fl-controls/v1
+    1  mc4wp/v1
+    1  ew-rest/v1
+    1  wc-paypal/v1
+    1  paypal/v1
+    1  wc/v3/wc_paypal
+    1  dmm/v1
+    1  stories
+    1  map
+    1  cptui/v1
+    1  compost
+    1  album-and-image-gallery-plus-lightbox/v1
+    1  sweep/v1
+    1  wc-facebook/v1
+    1  yikes/cpt/v1
+    1  bricks/v1
+    1  seopress/v1
+    1  wpcf7r/v1
+    1  cf7apps/v1
+    1  sowb/v1
+    1  siteorigin-panels/v1
+    1  imagely/v1
+    1  obfx
+    1  optml/v1
+    1  ccb-gutenberg/v1
+    1  solidwp-mail/v1
+    1  solid-mail/v1
+    1  quadlayers/menu-icons
+    1  iubenda-cookie-law-solution/v1
+    1  otter/v1
+    1  wc-push-notifications
+    1  ucmm/v1
+    1  woolentoropt/v1
+    1  woolentor/v1
+    1  breakdance/v1
+
+NAMESPACES PER SITE: min 5  median 15  max 47
+
+==========================================================================================
+ROBOTS: 125/192 returned a real robots.txt
+
+DISALLOW PATHS BY NUMBER OF DOMAINS (top 40)
+   32  /wp-admin/
+   25  Sitemap:
+   23  /
+   11  /api/
+    9  /pro-gallery-webapp/v1/galleries/*
+    9  /_partials*
+    9  *?lightbox=
+    8  /search
+    7  /account/
+    6  /*?format=json-pretty
+    6  /static/
+    6  /*?view=*
+    6  /*?author=*
+    6  /*&format=main-content
+    6  /*&reversePaginate=*
+    6  /config
+    6  /*&tag=*
+    6  /*&format=ical
+    6  /*&view=*
+    6  /*?format=page-context
+    6  /*&month=*
+    6  /*?tag=*
+    6  /*?format=ical
+    6  /*?format=json
+    6  /*?reversePaginate=*
+    6  /*&format=json-pretty
+    6  /*&format=json
+    6  /*&format=page-context
+    6  /*&author=*
+    6  /*?month=*
+    6  /*?format=main-content
+    6  /account$
+    6  /commerce/digital-download/
+    4  /wp-content/uploads/woocommerce_uploads/
+    4  /wp-content/uploads/wc-logs/
+    4  /wp-content/uploads/woocommerce_transient_files/
+    4  /ajax/
+    3  /admin/
+    3  /*fragment.htm
+    3  /*.css
+
+SITEMAP URL SHAPES BY NUMBER OF DOMAINS (top 25)
+   48  /sitemap.xml
+   31  /sitemap_index.xml
+   16  /wp-sitemap.xml
+    2  /sitemap.xml.gz
+    2  /sitemaps.xml
+    1  /sitemap814.xml
+    1  /sitemap614.xml
+    1  /sitemap259.xml
+    1  /sitemap389.xml
+    1  /sitemap551.xml
+    1  /sitemap539.xml
+    1  /sitemap240.xml
+    1  /sitemap693.xml
+    1  /sitemap648.xml
+    1  /sitemap496.xml
+    1  /sitemap866.xml
+    1  /sitemap845.xml
+    1  /sitemap503.xml
+    1  /sitemap766.xml
+    1  /sitemap679.xml
+    1  /sitemap410.xml
+    1  /sitemap395.xml
+    1  /sitemap364.xml
+    1  /sitemap280.xml
+    1  /sitemap381.xml
+
+COMMENT LINES BY NUMBER OF DOMAINS (top 25)
+   25  # ---------------------------
+   25  # start yoast block
+   25  # end yoast block
+    9  # auto generated, go to seo tools > robots.txt editor to change this
+    9  # crawl delay for overly enthusiastic bots
+    9  # optimization for google ads bot
+    9  # block petalbot
+    6  # squarespace robots txt
+    3  #      use.
+    3  # and related rights in the digital single market.
+    3  # ai-train: training or fine-tuning ai models.
+    3  # (b)  if a content-signal = no, you may not collect content for the
+    3  #      corresponding use, the website operator neither grants nor restricts
+    3  #           hyperlinks and short excerpts from your website's contents). search 
+    3  # the content signals and their meanings are:
+    3  #           augmented generation, grounding, or other real-time taking of conten
+    3  # rights under article 4 of the european union directive 2019/790 on copyright
+    3  #           include providing ai-generated search summaries.
+    3  # any restrictions expressed via content signals are express reservations of
+    3  # content signals:
+    3  # search:   building a search index and providing search results (e.g., returnin
+    3  # as a condition of accessing this website, you agree to abide by the following
+    3  # ai-input: inputting content into one or more ai models (e.g., retrieval
+    3  #      corresponding use.
+    3  #           generative ai search answers).
+
+total wall time: 267s
