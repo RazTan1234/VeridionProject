@@ -1,0 +1,11 @@
+.venv/
+__pycache__/
+*.pyc
+*.egg-info/
+
+data/raw/
+data/signals/
+data/detections/
+data/reports/
+
+signatures/external/
