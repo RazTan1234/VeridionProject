@@ -41,3 +41,26 @@ TRANSIENT_ERRORS = {
   }
 
 RETRYABLE_STATUS = {429, 502, 503, 504}
+
+CHALLENGE_MARKERS = (
+    "just a moment",
+    "attention required",
+    "checking your browser",
+    "enable javascript and cookies",
+    "captcha",
+    "ddos protection",
+    "access denied",
+    "you don't have permission",
+)
+
+PARKING_MARKERS = (
+    "this domain",
+    "domain is for sale",
+    "buy this domain",
+    "parked",
+    "/lander",
+    "domain for sale",
+    "godaddy.com/forsale",
+    "sedoparking",
+    "afternic",
+)
