@@ -12,6 +12,7 @@ import tldextract
 
 from techdetect import config
 from techdetect.models import Attempt, FetchOutcome, FetchRecord
+from techdetect.network import inspect_certificate, resolve_dns
 from techdetect.store import read_content, read_records, write_content
 
 EXTRACT = tldextract.TLDExtract(suffix_list_urls=())
@@ -241,52 +242,75 @@ async def fetch_domain(
     return records
 
 
-def already_fetched(manifest_path: Path) -> set[str]:
+HTTP_DOCUMENTS = {"home", "robots", "wp_json"}
+ALL_DOCUMENTS = ("home", "dns", "tls")
+
+
+def fetched_documents(manifest_path: Path) -> dict[str, set[str]]:
+    present: dict[str, set[str]] = {}
     if not manifest_path.exists():
-        return set()
-    return {
-        record.domain
-        for record in read_records(manifest_path, FetchRecord)
-        if record.document_id == "home"
-    }
+        return present
+    for record in read_records(manifest_path, FetchRecord):
+        present.setdefault(record.domain, set()).add(record.document_id)
+    return present
 
 
-async def fetch_all(domains: list[str], raw_dir: Path, manifest_path: Path) -> int:
+def failure_record(domain: str, document_id: str, error: Exception) -> FetchRecord:
+    return FetchRecord(
+        domain=domain,
+        document_id=document_id,
+        requested_url=f"https://{domain}",
+        outcome=FetchOutcome.ERROR,
+        attempts=[
+            Attempt(
+                url=f"https://{domain}",
+                outcome="error",
+                error_type=type(error).__name__,
+                error_message=str(error)[:200],
+            )
+        ],
+        fetched_at=datetime.now(timezone.utc).isoformat(),
+    )
+
+
+async def fetch_missing(
+    client: httpx.AsyncClient, domain: str, missing: set[str], raw_dir: Path
+) -> list[FetchRecord]:
+    jobs = []
+    if "home" in missing:
+        jobs.append(fetch_domain(client, domain, raw_dir))
+    if "dns" in missing:
+        jobs.append(resolve_dns(domain, raw_dir))
+    if "tls" in missing:
+        jobs.append(inspect_certificate(domain, raw_dir))
+
+    records: list[FetchRecord] = []
+    for result in await asyncio.gather(*jobs, return_exceptions=True):
+        if isinstance(result, Exception):
+            logging.error("%s failed unexpectedly: %s", domain, result)
+            records.append(failure_record(domain, sorted(missing)[0], result))
+        elif isinstance(result, list):
+            records.extend(result)
+        else:
+            records.append(result)
+    return records
+
+
+async def fetch_all(plan: dict[str, set[str]], raw_dir: Path, manifest_path: Path) -> int:
     semaphore = asyncio.Semaphore(config.MAX_CONCURRENCY)
     limits = httpx.Limits(max_connections=config.MAX_CONCURRENCY * 2)
     written = 0
 
-    async def worker(domain: str) -> list[FetchRecord]:
-        async with semaphore:
-            try:
-                return await fetch_domain(client, domain, raw_dir)
-            except Exception as error:
-                logging.error("%s failed unexpectedly: %s", domain, error)
-                return [
-                    FetchRecord(
-                        domain=domain,
-                        document_id="home",
-                        requested_url=f"https://{domain}",
-                        outcome=FetchOutcome.ERROR,
-                        attempts=[
-                            Attempt(
-                                url=f"https://{domain}",
-                                outcome="error",
-                                error_type=type(error).__name__,
-                                error_message=str(error)[:200],
-                            )
-                        ],
-                        fetched_at=datetime.now(timezone.utc).isoformat(),
-                    )
-                ]
+    async with httpx.AsyncClient(follow_redirects=True, timeout=TIMEOUT, limits=limits) as client:
 
-    async with httpx.AsyncClient(
-        follow_redirects=True, timeout=TIMEOUT, limits=limits
-    ) as client:
-        tasks = [asyncio.create_task(worker(domain)) for domain in domains]
+        async def worker(domain: str) -> tuple[str, list[FetchRecord]]:
+            async with semaphore:
+                return domain, await fetch_missing(client, domain, plan[domain], raw_dir)
+
+        tasks = [asyncio.create_task(worker(domain)) for domain in plan]
         with open(manifest_path, "a", encoding="utf-8") as handle:
             for finished, task in enumerate(asyncio.as_completed(tasks), start=1):
-                records = await task
+                domain, records = await task
                 for record in records:
                     handle.write(record.model_dump_json() + "\n")
                     written += 1
@@ -294,28 +318,30 @@ async def fetch_all(domains: list[str], raw_dir: Path, manifest_path: Path) -> i
                 logging.info(
                     "[%d/%d] %s %s",
                     finished,
-                    len(domains),
-                    records[0].domain,
-                    records[0].outcome.value,
+                    len(plan),
+                    domain,
+                    " ".join(f"{r.document_id}={r.outcome.value}" for r in records),
                 )
 
     return written
 
 
-def run_fetch(domains: list[str], raw_dir) -> int:
+def run_fetch(domains: list[str], raw_dir, refresh: set[str] | None = None) -> int:
     raw_dir = Path(raw_dir)
     raw_dir.mkdir(parents=True, exist_ok=True)
     manifest_path = raw_dir / "manifest.jsonl"
 
-    done = already_fetched(manifest_path)
-    pending = [domain for domain in domains if domain not in done]
+    present = fetched_documents(manifest_path)
+    plan = {
+        domain: missing
+        for domain in domains
+        if (missing := (set(ALL_DOCUMENTS) - present.get(domain, set())) | (refresh or set()))
+    }
 
-    if done:
-        logging.info("skipping %d domains already in the manifest", len(done))
-    if not pending:
-        logging.info("nothing to fetch")
+    logging.info("%d domains need work, %d already complete", len(plan), len(domains) - len(plan))
+    if not plan:
         return 0
 
-    written = asyncio.run(fetch_all(pending, raw_dir, manifest_path))
+    written = asyncio.run(fetch_all(plan, raw_dir, manifest_path))
     logging.info("wrote %d records to %s", written, manifest_path)
     return 0

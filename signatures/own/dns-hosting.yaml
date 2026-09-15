@@ -1,0 +1,149 @@
+technologies:
+  - name: Wix
+    categories: [CMS, Blogs]
+    patterns:
+      - {kind: dns_record, key: NS, value: '\.wixdns\.net$'}
+      - {kind: dns_record, key: www.CNAME, value: '\.wixdns\.net$'}
+      - {kind: dns_record, key: SOA, value: 'wixdns\.net'}
+  - name: Akamai
+    categories: [CDN]
+    patterns:
+      - {kind: dns_record, key: NS, value: '\.akam\.net$'}
+      - {kind: dns_record, key: www.CNAME, value: '\.(edgekey|akamaiedge|edgesuite)\.net$'}
+  - name: Squarespace
+    categories: [CMS]
+    patterns:
+      - {kind: dns_record, key: NS, value: 'squarespacedns\.com$'}
+      - {kind: dns_record, key: www.CNAME, value: '\.squarespace\.com$'}
+  - name: WP Engine
+    categories: [PaaS, Hosting]
+    patterns:
+      - {kind: dns_record, key: www.CNAME, value: '\.(wpenginepowered|wpengine)\.com$'}
+  - name: Webflow
+    categories: [Page builders]
+    patterns:
+      - {kind: dns_record, key: www.CNAME, value: '\.webflow\.(com|io)$'}
+  - name: Shopify
+    categories: [Ecommerce]
+    patterns:
+      - {kind: dns_record, key: www.CNAME, value: '\.myshopify\.com$'}
+  - name: Hostinger
+    categories: [Hosting]
+    patterns:
+      - {kind: dns_record, key: NS, value: '\.dns-parking\.com$'}
+      - {kind: dns_record, key: MX, value: '\.hostinger\.com$'}
+      - {kind: dns_record, key: TXT, value: 'include:_spf\.mail\.hostinger\.com'}
+  - name: NS1
+    categories: [DNS]
+    patterns:
+      - {kind: dns_record, key: NS, value: '\.nsone\.net$'}
+  - name: Network Solutions
+    categories: [Hosting]
+    patterns:
+      - {kind: dns_record, key: NS, value: '\.worldnic\.com$'}
+  - name: IONOS
+    categories: [Hosting]
+    patterns:
+      - {kind: dns_record, key: NS, value: '\.ui-dns\.(org|de|biz|com)$'}
+      - {kind: dns_record, key: TXT, value: 'include:_spf[\w.-]*\.ionos\.(com|de)'}
+      - {kind: dns_record, key: MX, value: '\.(ionos|1and1)\.(com|de|co\.uk)$'}
+  - name: Strato
+    categories: [Hosting, PaaS]
+    patterns:
+      - {kind: dns_record, key: NS, value: '\.rzone\.de$'}
+  - name: Register.com
+    categories: [Hosting]
+    patterns:
+      - {kind: dns_record, key: NS, value: '\.register\.com$'}
+  - name: Hostgator
+    categories: [Hosting]
+    patterns:
+      - {kind: dns_record, key: NS, value: '\.hostgator\.com$'}
+      - {kind: dns_record, key: TXT, value: 'include:websitewelcome\.com'}
+  - name: SiteGround
+    categories: [PaaS, Hosting]
+    patterns:
+      - {kind: dns_record, key: NS, value: '\.siteground\.net$'}
+  - name: Namecheap
+    categories: [Hosting]
+    patterns:
+      - {kind: dns_record, key: NS, value: '\.registrar-servers\.com$'}
+      - {kind: dns_record, key: MX, value: 'eforward\d\.registrar-servers\.com$'}
+  - name: Aruba.it
+    categories: [Hosting, PaaS]
+    patterns:
+      - {kind: dns_record, key: NS, value: '\.(technorail\.com|arubadns\.(net|cz))$'}
+      - {kind: dns_record, key: TXT, value: 'include:_spf\.aruba\.it'}
+  - name: Xserver
+    categories: [Hosting]
+    patterns:
+      - {kind: dns_record, key: NS, value: '\.xserver\.jp$'}
+      - {kind: dns_record, key: TXT, value: 'include:spf\.sender\.xserver\.jp'}
+  - name: Simply.com
+    categories: [Hosting]
+    website: https://www.simply.com
+    patterns:
+      - {kind: dns_record, key: NS, value: '\.simply\.com$'}
+      - {kind: dns_record, key: MX, value: 'mx\.simply\.com$'}
+      - {kind: http_header, key: server, value: '^Simply\.com'}
+      - {kind: http_header, key: simplycom-server}
+  - name: Dealer.com
+    categories: [CMS, Ecommerce]
+    website: https://www.dealer.com
+    patterns:
+      - {kind: dns_record, key: NS, value: '\.dealer\.com$'}
+      - {kind: link_host, value: '(^|\.)dealer\.com$'}
+      - {kind: cookie, key: 'DDC.*'}
+      - {kind: cookie, key: 'ddc_*'}
+  - name: Timeweb
+    categories: [Hosting]
+    patterns:
+      - {kind: dns_record, key: NS, value: '\.timeweb\.(ru|org)$'}
+  - name: ArvanCloud
+    categories: [CDN]
+    patterns:
+      - {kind: dns_record, key: NS, value: '\.arvancdn\.ir$'}
+  - name: goneo
+    categories: [Hosting]
+    patterns:
+      - {kind: dns_record, key: NS, value: '\.goneo\.de$'}
+      - {kind: dns_record, key: MX, value: '\.goneo\.de$'}
+  - name: OVHcloud
+    categories: [PaaS, Hosting]
+    patterns:
+      - {kind: dns_record, key: MX, value: '\.ovh\.net$'}
+      - {kind: dns_record, key: TXT, value: 'include:mx\.ovh\.com'}
+  - name: GoDaddy
+    categories: [Hosting]
+    patterns:
+      - {kind: dns_record, key: MX, value: '\.secureserver\.net$'}
+      - {kind: dns_record, key: TXT, value: 'include:secureserver\.net'}
+      - {kind: dns_record, key: _dmarc.TXT, value: 'onsecureserver\.net'}
+  - name: KingHost
+    categories: [Hosting]
+    patterns:
+      - {kind: dns_record, key: MX, value: '\.kinghost\.net$'}
+      - {kind: dns_record, key: TXT, value: 'include:[\w.-]*kinghost\.net'}
+  - name: Turbify
+    categories: [Hosting]
+    patterns:
+      - {kind: dns_record, key: www.CNAME, value: '\.turbify\.biz$'}
+  - name: Google Business Profile
+    categories: [Page builders]
+    patterns:
+      - {kind: hostname, value: '\.business\.site$'}
+  - name: Weebly
+    categories: [CMS]
+    patterns:
+      - {kind: hostname, value: '\.weebly\.com$'}
+      - {kind: http_header, key: x-host, value: '\.weebly\.net$'}
+  - name: eatbu
+    categories: [Page builders]
+    website: https://www.eatbu.com
+    patterns:
+      - {kind: hostname, value: '\.eatbu\.com$'}
+  - name: Booked.net
+    categories: [Booking]
+    website: https://booked.net
+    patterns:
+      - {kind: hostname, value: '\.booked\.net$'}

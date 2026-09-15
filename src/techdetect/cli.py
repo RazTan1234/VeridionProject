@@ -4,7 +4,7 @@ import sys
 
 import pyarrow.parquet as pq
 
-from techdetect import config, detect, extract, fetch, report
+from techdetect import config, detect, external, extract, fetch, report, signatures
 
 
 def load_domains(path) -> list[str]:
@@ -17,7 +17,18 @@ def command_fetch(args) -> int:
     if args.limit:
         domains = domains[: args.limit]
     logging.info("fetching %d domains into %s", len(domains), args.raw_dir)
-    return fetch.run_fetch(domains, args.raw_dir)
+    return fetch.run_fetch(domains, args.raw_dir, refresh=set(args.refresh or []))
+
+
+def command_signatures(args) -> int:
+    if args.sync:
+        stats = external.run_sync(config.EXTERNAL_SIGNATURES_DIR)
+        for key, value in sorted(stats.items()):
+            logging.info("  %-36s %d", key, value)
+    loaded = signatures.load_signatures(args.signatures)
+    for key, value in sorted(signatures.describe(loaded).items()):
+        logging.info("  %-36s %d", key, value)
+    return 0
 
 
 def command_extract(args) -> int:
@@ -44,7 +55,13 @@ def build_parser() -> argparse.ArgumentParser:
     fetch_parser.add_argument("--input", default=config.INPUT_PARQUET)
     fetch_parser.add_argument("--raw-dir", dest="raw_dir", default=config.RAW_DIR)
     fetch_parser.add_argument("--limit", type=int, default=None)
+    fetch_parser.add_argument("--refresh", nargs="*", choices=["home", "dns", "tls"])
     fetch_parser.set_defaults(handler=command_fetch)
+
+    signatures_parser = subparsers.add_parser("signatures", help="sync and inspect signature sources")
+    signatures_parser.add_argument("--sync", action="store_true")
+    signatures_parser.add_argument("--signatures", default=config.SIGNATURES_DIR)
+    signatures_parser.set_defaults(handler=command_signatures)
 
     extract_parser = subparsers.add_parser("extract", help="turn raw data into signals")
     extract_parser.add_argument("--raw-dir", dest="raw_dir", default=config.RAW_DIR)

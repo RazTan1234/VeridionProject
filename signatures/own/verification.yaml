@@ -1,0 +1,55 @@
+technologies:
+  - name: Google Search Console
+    categories: [SEO]
+    website: https://search.google.com/search-console
+    patterns:
+      - {kind: dns_record, key: TXT, value: '^google-site-verification='}
+      - {kind: meta, key: google-site-verification}
+  - name: Facebook Business Manager
+    categories: [Advertising]
+    website: https://business.facebook.com
+    patterns:
+      - {kind: dns_record, key: TXT, value: '^facebook-domain-verification='}
+      - {kind: meta, key: facebook-domain-verification}
+  - name: Atlassian Cloud
+    categories: [Development]
+    patterns:
+      - {kind: dns_record, key: TXT, value: '^atlassian-domain-verification='}
+  - name: KnowBe4
+    categories: [Security]
+    website: https://www.knowbe4.com
+    patterns:
+      - {kind: dns_record, key: TXT, value: '^knowbe4-site-verification='}
+  - name: Miro
+    categories: [Miscellaneous]
+    patterns:
+      - {kind: dns_record, key: TXT, value: '^miro-verification='}
+  - name: Slack
+    categories: [Miscellaneous]
+    patterns:
+      - {kind: dns_record, key: TXT, value: '^slack-domain-verification='}
+  - name: DocuSign
+    categories: [Miscellaneous]
+    website: https://www.docusign.com
+    patterns:
+      - {kind: dns_record, key: TXT, value: '^docusign='}
+  - name: Afternic
+    categories: [Domain parking]
+    website: https://www.afternic.com
+    patterns:
+      - {kind: dns_record, key: TXT, value: '^afternic-verification'}
+  - name: Yandex.Webmaster
+    categories: [SEO]
+    website: https://webmaster.yandex.com
+    patterns:
+      - {kind: meta, key: yandex-verification}
+  - name: Bing Webmaster Tools
+    categories: [SEO]
+    website: https://www.bing.com/webmasters
+    patterns:
+      - {kind: meta, key: msvalidate.01}
+  - name: Pinterest
+    categories: [Social]
+    website: https://www.pinterest.com
+    patterns:
+      - {kind: meta, key: 'p:domain_verify'}

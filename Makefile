@@ -7,17 +7,24 @@ SIGNALS := data/signals/signals.jsonl
 DETECTIONS := data/detections/detections.jsonl
 REPORT := data/reports/technologies.parquet
 
-SIGNATURE_FILES := $(wildcard signatures/own/*.yaml) $(wildcard signatures/external/*.yaml)
+EXTERNAL_SIGNATURES := signatures/external/technologies.jsonl
+SIGNATURE_FILES := $(wildcard signatures/own/*.yaml) $(EXTERNAL_SIGNATURES)
 
 LIMIT :=
 FETCH_ARGS := $(if $(LIMIT),--limit $(LIMIT),)
 
 .DEFAULT_GOAL := report
 
-.PHONY: install fetch extract detect report test clean clean-raw
+.PHONY: install signatures fetch extract detect report test clean clean-raw
 
 install:
 	.venv/bin/pip install -e ".[dev]"
+
+$(EXTERNAL_SIGNATURES):
+	$(TECHDETECT) signatures --sync
+
+signatures: $(EXTERNAL_SIGNATURES)
+	$(TECHDETECT) signatures
 
 $(MANIFEST): $(INPUT)
 	$(TECHDETECT) fetch $(FETCH_ARGS)

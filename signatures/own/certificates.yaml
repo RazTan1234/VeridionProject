@@ -1,0 +1,48 @@
+technologies:
+  - name: Google Trust Services
+    categories: [SSL/TLS certificate authorities]
+    website: https://pki.goog
+    patterns:
+      - {kind: tls_issuer, key: organization, value: '^Google Trust Services'}
+  - name: GoDaddy SSL
+    categories: [SSL/TLS certificate authorities]
+    website: https://www.godaddy.com/web-security/ssl-certificate
+    patterns:
+      - {kind: tls_issuer, key: organization, value: '^GoDaddy\.com'}
+  - name: GlobalSign
+    categories: [SSL/TLS certificate authorities]
+    patterns:
+      - {kind: tls_issuer, key: organization, value: '^GlobalSign'}
+  - name: ZeroSSL
+    categories: [SSL/TLS certificate authorities]
+    website: https://zerossl.com
+    patterns:
+      - {kind: tls_issuer, key: organization, value: '^ZeroSSL'}
+  - name: Entrust
+    categories: [SSL/TLS certificate authorities]
+    patterns:
+      - {kind: tls_issuer, key: organization, value: '^Entrust'}
+  - name: Actalis
+    categories: [SSL/TLS certificate authorities]
+    website: https://www.actalis.com
+    patterns:
+      - {kind: tls_issuer, key: organization, value: '^Actalis'}
+  - name: CloudSecure
+    categories: [SSL/TLS certificate authorities]
+    website: https://www.cloudsecure.co.jp
+    patterns:
+      - {kind: tls_issuer, key: organization, value: '^CloudSecure'}
+  - name: LH.pl
+    categories: [Hosting]
+    website: https://www.lh.pl
+    patterns:
+      - {kind: tls_issuer, key: organization, value: '^LH\.pl'}
+  - name: nazwa.pl
+    categories: [Hosting]
+    website: https://www.nazwa.pl
+    patterns:
+      - {kind: tls_issuer, key: organization, value: '^nazwa\.pl'}
+  - name: Cloudflare
+    categories: [CDN]
+    patterns:
+      - {kind: tls_subject, value: 'cloudflaressl\.com$'}

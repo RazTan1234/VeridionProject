@@ -1,0 +1,566 @@
+technologies:
+  - name: WordPress
+    categories: [CMS, Blogs]
+    patterns:
+      - {kind: wp_rest_namespace, value: '^wp/v2$'}
+      - {kind: http_header, key: link, value: 'rel="https://api\.w\.org/"'}
+
+  - name: WooCommerce
+    categories: [Ecommerce, WordPress plugins]
+    patterns:
+      - {kind: wp_rest_namespace, value: '^(wc|wc-admin|wc-analytics|wc-telemetry|wccom-site|wc-admin-email|wc-push-notifications)(/|$)'}
+  - name: WooCommerce PayPal Payments
+    categories: [WordPress plugins]
+    patterns:
+      - {kind: wp_rest_namespace, value: '^(wc-paypal|paypal)(/|$)'}
+  - name: Facebook for WooCommerce
+    categories: [WordPress plugins]
+    patterns:
+      - {kind: wp_rest_namespace, value: '^wc-facebook(/|$)'}
+  - name: WooLentor
+    categories: [WordPress plugins]
+    patterns:
+      - {kind: wp_rest_namespace, value: '^woolentor(opt)?(/|$)'}
+
+  - name: Elementor
+    categories: [Page builders, WordPress plugins]
+    patterns:
+      - {kind: wp_rest_namespace, value: '^(elementor|elementor-ai|elementor-one)(/|$)'}
+  - name: Elementor Pro
+    categories: [Page builders, WordPress plugins]
+    patterns:
+      - {kind: wp_rest_namespace, value: '^elementor-pro(/|$)'}
+  - name: Hello Elementor
+    categories: [WordPress themes]
+    patterns:
+      - {kind: wp_rest_namespace, value: '^elementor-hello-elementor(/|$)'}
+  - name: Elementor Cloud
+    categories: [Hosting]
+    patterns:
+      - {kind: wp_rest_namespace, value: '^elementor-hosting(/|$)'}
+  - name: Image Optimizer by Elementor
+    categories: [WordPress plugins]
+    patterns:
+      - {kind: wp_rest_namespace, value: '^image-optimizer(/|$)'}
+  - name: ElementsKit
+    categories: [WordPress plugins]
+    patterns:
+      - {kind: wp_rest_namespace, value: '^elementskit(/|$)'}
+  - name: JetEngine
+    categories: [WordPress plugins]
+    patterns:
+      - {kind: wp_rest_namespace, value: '^jet-engine(/|$)'}
+  - name: Crocoblock JetElements
+    categories: [WordPress plugins]
+    patterns:
+      - {kind: wp_rest_namespace, value: '^jet-elements-api(/|$)'}
+  - name: JetTabs
+    categories: [WordPress plugins]
+    patterns:
+      - {kind: wp_rest_namespace, value: '^jet-tabs-api(/|$)'}
+  - name: JetThemeCore
+    categories: [WordPress plugins]
+    patterns:
+      - {kind: wp_rest_namespace, value: '^(jet-theme-core-api|croco)(/|$)'}
+  - name: JetMenu
+    categories: [WordPress plugins]
+    patterns:
+      - {kind: wp_rest_namespace, value: '^jet-menu-api(/|$)'}
+  - name: JetPopup
+    categories: [WordPress plugins]
+    patterns:
+      - {kind: wp_rest_namespace, value: '^jet-popup(/|$)'}
+  - name: JetBlocks
+    categories: [WordPress plugins]
+    patterns:
+      - {kind: wp_rest_namespace, value: '^jet-blocks-api(/|$)'}
+
+  - name: Yoast SEO
+    categories: [SEO, WordPress plugins]
+    patterns:
+      - {kind: wp_rest_namespace, value: '^yoast(/|$)'}
+  - name: Yoast Duplicate Post
+    categories: [WordPress plugins]
+    patterns:
+      - {kind: wp_rest_namespace, value: '^duplicate-post(/|$)'}
+  - name: Rank Math SEO
+    categories: [SEO, WordPress plugins]
+    patterns:
+      - {kind: wp_rest_namespace, value: '^(rankmath|rankmath-marketplace)(/|$)'}
+  - name: All in One SEO
+    categories: [SEO, WordPress plugins]
+    patterns:
+      - {kind: wp_rest_namespace, value: '^aioseo(/|$)'}
+  - name: SEOPress
+    categories: [SEO, WordPress plugins]
+    patterns:
+      - {kind: wp_rest_namespace, value: '^seopress(/|$)'}
+  - name: Schema & Structured Data for WP
+    categories: [SEO, WordPress plugins]
+    patterns:
+      - {kind: wp_rest_namespace, value: '^saswp-output(/|$)'}
+  - name: Redirection
+    categories: [WordPress plugins]
+    patterns:
+      - {kind: wp_rest_namespace, value: '^redirection(/|$)'}
+  - name: Simple Sitemap
+    categories: [WordPress plugins]
+    patterns:
+      - {kind: wp_rest_namespace, value: '^simple-sitemap(/|$)'}
+
+  - name: Jetpack
+    categories: [WordPress plugins]
+    patterns:
+      - {kind: wp_rest_namespace, value: '^(jetpack|my-jetpack|wpcom)(/|$)'}
+  - name: Jetpack Boost
+    categories: [WordPress plugins]
+    patterns:
+      - {kind: wp_rest_namespace, value: '^jetpack-boost(/|$)'}
+  - name: Akismet
+    categories: [WordPress plugins]
+    patterns:
+      - {kind: wp_rest_namespace, value: '^akismet(/|$)'}
+
+  - name: Contact Form 7
+    categories: [WordPress plugins, Form builders]
+    patterns:
+      - {kind: wp_rest_namespace, value: '^contact-form-7(/|$)'}
+  - name: Contact Form 7 Multi-Step Forms
+    categories: [WordPress plugins]
+    patterns:
+      - {kind: wp_rest_namespace, value: '^cf7mls(/|$)'}
+  - name: Redirection for Contact Form 7
+    categories: [WordPress plugins]
+    patterns:
+      - {kind: wp_rest_namespace, value: '^wpcf7r(/|$)'}
+  - name: WPForms
+    categories: [WordPress plugins, Form builders]
+    patterns:
+      - {kind: wp_rest_namespace, value: '^wpforms(/|$)'}
+  - name: Formidable Forms
+    categories: [WordPress plugins, Form builders]
+    patterns:
+      - {kind: wp_rest_namespace, value: '^frm-admin(/|$)'}
+  - name: Forminator
+    categories: [WordPress plugins, Form builders]
+    patterns:
+      - {kind: wp_rest_namespace, value: '^forminator(/|$)'}
+  - name: Everest Forms
+    categories: [WordPress plugins, Form builders]
+    patterns:
+      - {kind: wp_rest_namespace, value: '^everest-forms(/|$)'}
+      - {kind: meta, key: generator, value: '^Everest Forms ([\d.]+)', version: '\1'}
+  - name: MetForm
+    categories: [WordPress plugins, Form builders]
+    patterns:
+      - {kind: wp_rest_namespace, value: '^metform(/|$)'}
+  - name: Gravity Forms
+    categories: [WordPress plugins, Form builders]
+    patterns:
+      - {kind: wp_rest_namespace, value: '^(gf|gravityforms)(/|$)'}
+  - name: Gravity PDF
+    categories: [WordPress plugins]
+    patterns:
+      - {kind: wp_rest_namespace, value: '^gravity-pdf(/|$)'}
+  - name: Gravity Perks
+    categories: [WordPress plugins]
+    patterns:
+      - {kind: wp_rest_namespace, value: '^gwiz(/|$)'}
+
+  - name: Wordfence
+    categories: [WordPress plugins, Security]
+    patterns:
+      - {kind: wp_rest_namespace, value: '^wordfence(/|$)'}
+  - name: Wordfence Login Security
+    categories: [WordPress plugins, Security]
+    patterns:
+      - {kind: wp_rest_namespace, value: '^wordfence-login-security(/|$)'}
+  - name: iThemes Security
+    categories: [WordPress plugins, Security]
+    patterns:
+      - {kind: wp_rest_namespace, value: '^ithemes-security(/|$)'}
+  - name: All-In-One Security
+    categories: [WordPress plugins, Security]
+    patterns:
+      - {kind: wp_rest_namespace, value: '^aios(/|$)'}
+  - name: Limit Login Attempts Reloaded
+    categories: [WordPress plugins, Security]
+    patterns:
+      - {kind: wp_rest_namespace, value: '^llar(/|$)'}
+  - name: Two Factor
+    categories: [WordPress plugins, Security]
+    patterns:
+      - {kind: wp_rest_namespace, value: '^two-factor(/|$)'}
+  - name: WP 2FA
+    categories: [WordPress plugins, Security]
+    patterns:
+      - {kind: wp_rest_namespace, value: '^wp-2fa-(methods|passkeys)(/|$)'}
+
+  - name: Site Kit
+    categories: [Analytics, WordPress plugins]
+    patterns:
+      - {kind: wp_rest_namespace, value: '^google-site-kit(/|$)'}
+  - name: MonsterInsights
+    categories: [WordPress plugins, Analytics]
+    patterns:
+      - {kind: wp_rest_namespace, value: '^monsterinsights(/|$)'}
+  - name: UserFeedback
+    categories: [WordPress plugins, Surveys]
+    patterns:
+      - {kind: wp_rest_namespace, value: '^userfeedback(/|$)'}
+  - name: Google Tag Manager for WordPress
+    categories: [WordPress plugins, Tag managers]
+    patterns:
+      - {kind: wp_rest_namespace, value: '^gtm4wp(/|$)'}
+  - name: Matomo Analytics
+    categories: [Analytics]
+    patterns:
+      - {kind: wp_rest_namespace, value: '^matomo(/|$)'}
+  - name: WP Statistics
+    categories: [WordPress plugins, Analytics]
+    patterns:
+      - {kind: wp_rest_namespace, value: '^wp-statistics(/|$)'}
+  - name: Koko Analytics
+    categories: [WordPress plugins, Analytics]
+    patterns:
+      - {kind: wp_rest_namespace, value: '^koko-analytics(/|$)'}
+  - name: Burst
+    categories: [Analytics]
+    patterns:
+      - {kind: wp_rest_namespace, value: '^burst(/|$)'}
+
+  - name: Litespeed Cache
+    categories: [Caching, WordPress plugins]
+    patterns:
+      - {kind: wp_rest_namespace, value: '^litespeed(/|$)'}
+  - name: WP Super Cache
+    categories: [Caching, WordPress plugins]
+    patterns:
+      - {kind: wp_rest_namespace, value: '^wp-super-cache(/|$)'}
+  - name: WP Rocket
+    categories: [Caching, WordPress plugins]
+    patterns:
+      - {kind: wp_rest_namespace, value: '^wp-rocket(/|$)'}
+  - name: Object Cache Pro
+    categories: [Caching, WordPress plugins]
+    patterns:
+      - {kind: wp_rest_namespace, value: '^objectcache(/|$)'}
+  - name: WP-Optimize
+    categories: [WordPress plugins, Performance]
+    patterns:
+      - {kind: wp_rest_namespace, value: '^wp-optimize(/|$)'}
+  - name: SiteGround
+    categories: [PaaS, Hosting]
+    patterns:
+      - {kind: wp_rest_namespace, value: '^siteground-(optimizer|settings)(/|$)'}
+  - name: Optimole
+    categories: [Digital asset management]
+    patterns:
+      - {kind: wp_rest_namespace, value: '^optml(/|$)'}
+  - name: WPMU DEV Smush
+    categories: [WordPress plugins]
+    patterns:
+      - {kind: wp_rest_namespace, value: '^wp-smush(/|$)'}
+  - name: WPMU DEV Dashboard
+    categories: [WordPress plugins]
+    patterns:
+      - {kind: wp_rest_namespace, value: '^wpmudev(-dashboard|_pcs|_blc)(/|$)'}
+  - name: OMGF
+    categories: [WordPress plugins, Performance]
+    patterns:
+      - {kind: wp_rest_namespace, value: '^omgf(/|$)'}
+  - name: Converter for Media
+    categories: [WordPress plugins, Performance]
+    patterns:
+      - {kind: wp_rest_namespace, value: '^webp-converter(/|$)'}
+  - name: Regenerate Thumbnails
+    categories: [WordPress plugins]
+    patterns:
+      - {kind: wp_rest_namespace, value: '^regenerate-thumbnails(/|$)'}
+
+  - name: WP Engine
+    categories: [PaaS, Hosting]
+    patterns:
+      - {kind: wp_rest_namespace, value: '^(wpe|wpe_sign_on_plugin)(/|$)'}
+  - name: Bluehost
+    categories: [Hosting]
+    patterns:
+      - {kind: wp_rest_namespace, value: '^(bluehost|blu|newfold-[a-z-]+|nfd-[a-z-]+)(/|$)'}
+  - name: GoDaddy
+    categories: [Hosting]
+    patterns:
+      - {kind: wp_rest_namespace, value: '^wpaas(/|$)'}
+  - name: Liquid Web
+    categories: [PaaS, Hosting]
+    patterns:
+      - {kind: wp_rest_namespace, value: '^liquidweb(/|$)'}
+  - name: Nexcess
+    categories: [PaaS, Hosting]
+    patterns:
+      - {kind: wp_rest_namespace, value: '^nexcess-mapps(/|$)'}
+  - name: Flywheel
+    categories: [PaaS, Hosting]
+    patterns:
+      - {kind: wp_rest_namespace, value: '^flywheel(/|$)'}
+  - name: Plesk
+    categories: [Hosting panels]
+    patterns:
+      - {kind: wp_rest_namespace, value: '^wp-toolkit(/|$)'}
+  - name: InstaWP Connect
+    categories: [WordPress plugins]
+    patterns:
+      - {kind: wp_rest_namespace, value: '^instawp-connect(/|$)'}
+  - name: WP Umbrella
+    categories: [WordPress plugins]
+    patterns:
+      - {kind: wp_rest_namespace, value: '^wp-umbrella(/|$)'}
+
+  - name: Divi
+    categories: [Page builders, WordPress themes, WordPress plugins]
+    patterns:
+      - {kind: wp_rest_namespace, value: '^divi(/|$)'}
+  - name: Astra
+    categories: [WordPress themes]
+    patterns:
+      - {kind: wp_rest_namespace, value: '^astra(/|$)'}
+  - name: Spectra
+    categories: [WordPress plugins]
+    patterns:
+      - {kind: wp_rest_namespace, value: '^(spectra|uag)(/|$)'}
+  - name: Starter Templates
+    categories: [WordPress plugins]
+    patterns:
+      - {kind: wp_rest_namespace, value: '^gutenberg-templates(/|$)'}
+  - name: ZipWP
+    categories: [WordPress plugins]
+    patterns:
+      - {kind: wp_rest_namespace, value: '^zipwp(-images)?(/|$)'}
+  - name: Kadence WP Blocks
+    categories: [WordPress plugins]
+    patterns:
+      - {kind: wp_rest_namespace, value: '^(kb-[a-z-]+|kbp|kbpp|kbp-dynamic)(/|$)'}
+  - name: GoDaddy CoBlocks
+    categories: [WordPress plugins, Page builders]
+    patterns:
+      - {kind: wp_rest_namespace, value: '^coblocks(/|$)'}
+  - name: Avada
+    categories: [WordPress themes]
+    patterns:
+      - {kind: wp_rest_namespace, value: '^awb(/|$)'}
+  - name: Bricks
+    categories: [Page builders, WordPress themes]
+    patterns:
+      - {kind: wp_rest_namespace, value: '^bricks(/|$)'}
+  - name: Breakdance
+    categories: [Page builders]
+    patterns:
+      - {kind: wp_rest_namespace, value: '^breakdance(/|$)'}
+  - name: Beaver Builder
+    categories: [WordPress plugins]
+    patterns:
+      - {kind: wp_rest_namespace, value: '^fl-controls(/|$)'}
+  - name: SiteOrigin Page Builder
+    categories: [WordPress plugins, Page builders]
+    patterns:
+      - {kind: wp_rest_namespace, value: '^siteorigin-panels(/|$)'}
+  - name: SiteOrigin Widgets Bundle
+    categories: [WordPress plugins]
+    patterns:
+      - {kind: wp_rest_namespace, value: '^sowb(/|$)'}
+  - name: Ultimate Addons for WPBakery
+    categories: [WordPress plugins]
+    patterns:
+      - {kind: wp_rest_namespace, value: '^(uavc|ultimate-vc)(/|$)'}
+  - name: Jupiter X
+    categories: [WordPress themes]
+    patterns:
+      - {kind: wp_rest_namespace, value: '^jupiterx-license(/|$)'}
+  - name: The7
+    categories: [WordPress themes]
+    patterns:
+      - {kind: wp_rest_namespace, value: '^the7(/|$)'}
+  - name: GeneratePress
+    categories: [WordPress themes]
+    patterns:
+      - {kind: wp_rest_namespace, value: '^generatepress(/|$)'}
+  - name: GenerateBlocks
+    categories: [WordPress plugins]
+    patterns:
+      - {kind: wp_rest_namespace, value: '^generateblocks(/|$)'}
+  - name: Semplice
+    categories: [WordPress themes]
+    patterns:
+      - {kind: wp_rest_namespace, value: '^semplice(/|$)'}
+  - name: Stratum
+    categories: [WordPress plugins]
+    patterns:
+      - {kind: wp_rest_namespace, value: '^Stratum(/|$)'}
+  - name: Essential Blocks
+    categories: [WordPress plugins]
+    patterns:
+      - {kind: wp_rest_namespace, value: '^essential-blocks(/|$)'}
+  - name: Otter Blocks
+    categories: [WordPress plugins]
+    patterns:
+      - {kind: wp_rest_namespace, value: '^otter(/|$)'}
+  - name: Orbit Fox
+    categories: [WordPress plugins]
+    patterns:
+      - {kind: wp_rest_namespace, value: '^obfx(/|$)'}
+  - name: Envato Elements
+    categories: [WordPress plugins]
+    patterns:
+      - {kind: wp_rest_namespace, value: '^envato-elements(/|$)'}
+  - name: Kirki Customizer Framework
+    categories: [WordPress plugins]
+    patterns:
+      - {kind: wp_rest_namespace, value: '^(kirki|KirkiComponentLibrary)(/|$)'}
+  - name: Redux Framework
+    categories: [WordPress plugins]
+    patterns:
+      - {kind: wp_rest_namespace, value: '^redux(/|$)'}
+  - name: CMB2
+    categories: [WordPress plugins]
+    patterns:
+      - {kind: wp_rest_namespace, value: '^cmb2(/|$)'}
+  - name: Pods Framework
+    categories: [WordPress plugins]
+    patterns:
+      - {kind: wp_rest_namespace, value: '^pods(/|$)'}
+  - name: Custom Post Type UI
+    categories: [WordPress plugins]
+    patterns:
+      - {kind: wp_rest_namespace, value: '^cptui(/|$)'}
+
+  - name: WPML
+    categories: [WordPress plugins, Translation]
+    patterns:
+      - {kind: wp_rest_namespace, value: '^(wpml|otgs)(/|$)'}
+  - name: Polylang
+    categories: [WordPress plugins, Translation]
+    patterns:
+      - {kind: wp_rest_namespace, value: '^pll(/|$)'}
+
+  - name: CookieYes
+    categories: [Cookie compliance]
+    patterns:
+      - {kind: wp_rest_namespace, value: '^(cky|cookieyes)(/|$)'}
+  - name: Complianz
+    categories: [Cookie compliance, WordPress plugins]
+    patterns:
+      - {kind: wp_rest_namespace, value: '^complianz(/|$)'}
+  - name: Real Cookie Banner
+    categories: [Cookie compliance, WordPress plugins]
+    patterns:
+      - {kind: wp_rest_namespace, value: '^real-(cookie-banner|queue|utils|product-manager-wp-client)(/|$)'}
+  - name: iubenda
+    categories: [Cookie compliance]
+    patterns:
+      - {kind: wp_rest_namespace, value: '^iubenda-cookie-law-solution(/|$)'}
+  - name: UserWay
+    categories: [Accessibility]
+    patterns:
+      - {kind: wp_rest_namespace, value: '^userway(/|$)'}
+  - name: Accessibility Checker
+    categories: [WordPress plugins, Accessibility]
+    patterns:
+      - {kind: wp_rest_namespace, value: '^(edac|accessibility-checker)(/|$)'}
+
+  - name: All-in-One WP Migration
+    categories: [WordPress plugins]
+    patterns:
+      - {kind: wp_rest_namespace, value: '^ai1wm(/|$)'}
+  - name: Duplicator
+    categories: [WordPress plugins]
+    patterns:
+      - {kind: wp_rest_namespace, value: '^duplicator(/|$)'}
+  - name: BackWPup
+    categories: [WordPress plugins]
+    patterns:
+      - {kind: wp_rest_namespace, value: '^backwpup(/|$)'}
+  - name: Simple History
+    categories: [WordPress plugins]
+    patterns:
+      - {kind: wp_rest_namespace, value: '^simple-history(/|$)'}
+  - name: WP All Import
+    categories: [WordPress plugins]
+    patterns:
+      - {kind: wp_rest_namespace, value: '^wp-all-import(/|$)'}
+  - name: Code Snippets
+    categories: [WordPress plugins]
+    patterns:
+      - {kind: wp_rest_namespace, value: '^code-snippets(/|$)'}
+  - name: FileBird
+    categories: [WordPress plugins]
+    patterns:
+      - {kind: wp_rest_namespace, value: '^filebird(/|$)'}
+  - name: Relevanssi
+    categories: [WordPress plugins, Search engines]
+    patterns:
+      - {kind: wp_rest_namespace, value: '^relevanssi(/|$)'}
+
+  - name: NextGEN Gallery
+    categories: [Photo galleries, WordPress plugins]
+    patterns:
+      - {kind: wp_rest_namespace, value: '^(ngg|imagely)(/|$)'}
+  - name: Slider Revolution
+    categories: [Widgets, Photo galleries]
+    patterns:
+      - {kind: wp_rest_namespace, value: '^sliderrevolution(/|$)'}
+  - name: Popup Maker
+    categories: [WordPress plugins]
+    patterns:
+      - {kind: wp_rest_namespace, value: '^(popup-maker|pum)(/|$)'}
+  - name: OptinMonster
+    categories: [Marketing automation]
+    patterns:
+      - {kind: wp_rest_namespace, value: '^omapp(/|$)'}
+  - name: NotificationX
+    categories: [WordPress plugins]
+    patterns:
+      - {kind: wp_rest_namespace, value: '^notificationx(/|$)'}
+  - name: Joinchat
+    categories: [Live chat]
+    patterns:
+      - {kind: wp_rest_namespace, value: '^joinchat(/|$)'}
+  - name: Modern Events Calendar
+    categories: [WordPress plugins, Calendars]
+    patterns:
+      - {kind: wp_rest_namespace, value: '^mec(/|$)'}
+  - name: Paid Memberships Pro
+    categories: [WordPress plugins, Membership]
+    patterns:
+      - {kind: wp_rest_namespace, value: '^pmpro(/|$)'}
+  - name: Cost Calculator Builder
+    categories: [WordPress plugins]
+    patterns:
+      - {kind: wp_rest_namespace, value: '^ccb-gutenberg(/|$)'}
+  - name: Ditty
+    categories: [WordPress plugins]
+    patterns:
+      - {kind: wp_rest_namespace, value: '^dittyeditor(/|$)'}
+
+  - name: MailPoet
+    categories: [WordPress plugins, Email]
+    patterns:
+      - {kind: wp_rest_namespace, value: '^mailpoet(/|$)'}
+  - name: MailChimp for WordPress
+    categories: [WordPress plugins, Marketing automation]
+    patterns:
+      - {kind: wp_rest_namespace, value: '^mc4wp(/|$)'}
+  - name: HubSpot WordPress plugin
+    categories: [WordPress plugins]
+    patterns:
+      - {kind: wp_rest_namespace, value: '^leadin(/|$)'}
+  - name: Post SMTP
+    categories: [WordPress plugins, Email]
+    patterns:
+      - {kind: wp_rest_namespace, value: '^post-smtp(/|$)'}
+  - name: SureMail
+    categories: [WordPress plugins, Email]
+    patterns:
+      - {kind: wp_rest_namespace, value: '^suremails(/|$)'}
+  - name: Solid Mail
+    categories: [WordPress plugins, Email]
+    patterns:
+      - {kind: wp_rest_namespace, value: '^(solidwp-mail|solid-mail)(/|$)'}

@@ -1,0 +1,117 @@
+technologies:
+  - name: Google Workspace
+    categories: [Webmail, Email]
+    patterns:
+      - {kind: dns_record, key: MX, value: '(^|\s)(smtp\.google\.com|aspmx\.l\.google\.com)$'}
+      - {kind: dns_record, key: TXT, value: 'include:_spf\.google\.com'}
+  - name: Microsoft 365
+    categories: [Webmail, Email]
+    patterns:
+      - {kind: dns_record, key: TXT, value: 'include:spf\.protection\.outlook\.com'}
+      - {kind: dns_record, key: TXT, value: '^ms=ms\d+$'}
+  - name: Mimecast
+    categories: [Email, Security]
+    website: https://www.mimecast.com
+    patterns:
+      - {kind: dns_record, key: MX, value: '\.mimecast\.com$'}
+      - {kind: dns_record, key: TXT, value: 'include:[\w.-]*mimecast\.com'}
+  - name: Proofpoint
+    categories: [Email, Security]
+    website: https://www.proofpoint.com
+    patterns:
+      - {kind: dns_record, key: MX, value: '\.(pphosted|ppe-hosted)\.com$'}
+      - {kind: dns_record, key: TXT, value: 'include:\S*pphosted\.com'}
+      - {kind: dns_record, key: _dmarc.TXT, value: '@[\w.-]*proofpoint\.com'}
+  - name: Rackspace Email
+    categories: [Email]
+    website: https://www.rackspace.com/email-hosting
+    patterns:
+      - {kind: dns_record, key: MX, value: '\.emailsrvr\.com$'}
+      - {kind: dns_record, key: TXT, value: 'include:emailsrvr\.com'}
+  - name: Intermedia
+    categories: [Email]
+    website: https://www.intermedia.com
+    patterns:
+      - {kind: dns_record, key: TXT, value: 'include:[\w.-]*serverdata\.net'}
+  - name: Yandex Mail
+    categories: [Email]
+    website: https://360.yandex.com
+    patterns:
+      - {kind: dns_record, key: MX, value: 'mx\.yandex\.(net|ru)$'}
+  - name: Zoho Mail
+    categories: [Email]
+    patterns:
+      - {kind: dns_record, key: MX, value: '\.zoho\.(com|eu|in)$'}
+      - {kind: dns_record, key: TXT, value: '^zoho-verification='}
+  - name: Sendgrid
+    categories: [Email]
+    patterns:
+      - {kind: dns_record, key: TXT, value: 'include:sendgrid\.net'}
+  - name: Mailgun
+    categories: [Email]
+    patterns:
+      - {kind: dns_record, key: TXT, value: 'include:mailgun\.org'}
+      - {kind: dns_record, key: _dmarc.TXT, value: '@[\w.-]*mailgun\.org'}
+  - name: Amazon SES
+    categories: [Email]
+    patterns:
+      - {kind: dns_record, key: TXT, value: 'include:amazonses\.com'}
+  - name: MailChimp
+    categories: [Marketing automation, Email]
+    patterns:
+      - {kind: dns_record, key: TXT, value: 'include:servers\.mcsv\.net'}
+  - name: MailChannels
+    categories: [Email]
+    website: https://www.mailchannels.com
+    patterns:
+      - {kind: dns_record, key: TXT, value: 'include:relay\.mailchannels\.net'}
+  - name: Postmark
+    categories: [Email]
+    website: https://postmarkapp.com
+    patterns:
+      - {kind: dns_record, key: TXT, value: 'include:spf\.mtasv\.net'}
+      - {kind: dns_record, key: _dmarc.TXT, value: '@[\w.-]*postmarkapp\.com'}
+  - name: Salesforce
+    categories: [CRM]
+    patterns:
+      - {kind: dns_record, key: TXT, value: 'include:_spf\.salesforce\.com'}
+  - name: Salesforce Marketing Cloud Email Studio
+    categories: [Email, Marketing automation]
+    patterns:
+      - {kind: dns_record, key: TXT, value: '^sfmc-'}
+  - name: Salesforce Commerce Cloud
+    categories: [Ecommerce]
+    patterns:
+      - {kind: dns_record, key: TXT, value: '^sfcc_verification'}
+      - {kind: cookie, key: 'dwanonymous_*'}
+      - {kind: cookie, key: 'dwac_*'}
+      - {kind: cookie, key: cqcid}
+      - {kind: script_host, value: '^cdn\.cquotient\.com$'}
+  - name: Zendesk
+    categories: [Documentation, Issue trackers, Live chat]
+    patterns:
+      - {kind: dns_record, key: TXT, value: 'include:mail\.zendesk\.com'}
+  - name: Brevo
+    categories: [Marketing automation, Email]
+    patterns:
+      - {kind: dns_record, key: TXT, value: '^brevo-code:'}
+      - {kind: dns_record, key: _dmarc.TXT, value: '@[\w.-]*brevo\.com'}
+  - name: Valimail
+    categories: [Email, Security]
+    website: https://www.valimail.com
+    patterns:
+      - {kind: dns_record, key: _dmarc.TXT, value: '@[\w.-]*vali\.email'}
+  - name: dmarcian
+    categories: [Email, Security]
+    website: https://dmarcian.com
+    patterns:
+      - {kind: dns_record, key: _dmarc.TXT, value: '@[\w.-]*dmarcian(-eu)?\.com'}
+  - name: OnDMARC
+    categories: [Email, Security]
+    website: https://redsift.com/pulse-platform/ondmarc
+    patterns:
+      - {kind: dns_record, key: _dmarc.TXT, value: '@[\w.-]*ondmarc\.com'}
+  - name: Cloudflare
+    categories: [CDN]
+    patterns:
+      - {kind: dns_record, key: _dmarc.TXT, value: '@[\w.-]*dmarc-reports\.cloudflare\.net'}

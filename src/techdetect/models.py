@@ -26,11 +26,14 @@ class SignalKind(str, Enum):
     LINK_HOST = "link_host"
     CSP_HOST = "csp_host"
     URL_PATH = "url_path"
+    PAGE_URL = "page_url"
     ROBOTS_LINE = "robots_line"
     WP_REST_NAMESPACE = "wp_rest_namespace"
     DNS_RECORD = "dns_record"
     TLS_ISSUER = "tls_issuer"
+    TLS_SUBJECT = "tls_subject"
     JS_GLOBAL = "js_global"
+    DOM = "dom"
 
 
 class Tier(str, Enum):
@@ -113,9 +116,11 @@ class Detection(BaseModel):
 class Pattern(BaseModel):
     kind: SignalKind
     key: str | None = None
+    attribute: str | None = None
     value: str | None = None
-    version_group: int | None = None
-    weight: float = 0.7
+    version: str | None = None
+    confidence: int = 100
+    weight: float | None = None
 
 
 class Signature(BaseModel):
@@ -127,3 +132,5 @@ class Signature(BaseModel):
     patterns: list[Pattern] = []
     implies: list[str] = []
     requires: list[str] = []
+    requires_category: list[str] = []
+    excludes: list[str] = []

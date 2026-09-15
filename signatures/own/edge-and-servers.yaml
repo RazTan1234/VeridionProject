@@ -1,0 +1,78 @@
+technologies:
+  - name: Wix
+    categories: [CMS, Blogs]
+    patterns:
+      - {kind: http_header, key: server, value: '^Pepyaka'}
+      - {kind: http_header, key: glb-x-seen-by, weight: 0.6}
+      - {kind: cookie, key: ssr-caching, value: 'varnish', weight: 0.8}
+      - {kind: link_host, value: '^(static\.wixstatic\.com|siteassets\.parastorage\.com)$'}
+      - {kind: robots_line, value: 'pro-gallery-webapp'}
+      - {kind: robots_line, value: 'go to seo tools > robots\.txt editor'}
+  - name: GoDaddy Website Builder
+    categories: [Page builders]
+    patterns:
+      - {kind: http_header, key: server, value: '^DPS/'}
+      - {kind: script_host, value: '^img\d\.wsimg\.com$'}
+      - {kind: link_host, value: '^img\d\.wsimg\.com$'}
+  - name: Akamai
+    categories: [CDN]
+    patterns:
+      - {kind: http_header, key: server, value: '^Akamai(GHost|NetStorage)'}
+      - {kind: cookie, key: AKA_A2}
+  - name: Akamai Bot Manager
+    categories: [Security]
+    patterns:
+      - {kind: cookie, key: _abck}
+      - {kind: cookie, key: bm_mi}
+  - name: Amazon CloudFront
+    categories: [CDN]
+    patterns:
+      - {kind: http_header, key: server, value: '^CloudFront'}
+      - {kind: http_header, key: x-amz-cf-id}
+      - {kind: http_header, key: via, value: 'CloudFront'}
+  - name: Sucuri
+    categories: [CDN, Security]
+    patterns:
+      - {kind: http_header, key: server, value: '^Sucuri'}
+      - {kind: http_header, key: x-sucuri-id}
+  - name: Flywheel
+    categories: [PaaS, Hosting]
+    patterns:
+      - {kind: http_header, key: server, value: '^Flywheel(?:/([\d.]+))?', version: '\1'}
+  - name: WebNode
+    categories: [CMS]
+    patterns:
+      - {kind: http_header, key: server, value: '^webnode'}
+  - name: Aruba.it
+    categories: [Hosting, PaaS]
+    patterns:
+      - {kind: http_header, key: server, value: '^aruba-proxy'}
+  - name: Nuxt.js
+    categories: [JavaScript frameworks]
+    patterns:
+      - {kind: http_header, key: x-powered-by, value: '^Nuxt'}
+  - name: Luxury Presence
+    categories: [CMS]
+    website: https://www.luxurypresence.com
+    patterns:
+      - {kind: http_header, key: x-powered-by, value: 'Luxury Presence'}
+      - {kind: script_host, value: '^cdn\.luxurypresence\.com$'}
+  - name: Cloudflare
+    categories: [CDN]
+    patterns:
+      - {kind: http_header, key: cf-mitigated}
+      - {kind: cookie, key: _cfuvid}
+      - {kind: robots_line, value: '^#?\s*content-signal', weight: 0.5}
+  - name: Kinsta
+    categories: [PaaS, Hosting]
+    patterns:
+      - {kind: http_header, key: ki-cf-cache-status}
+      - {kind: http_header, key: ki-edge}
+      - {kind: http_header, key: x-edge-location-klb}
+  - name: Shopify
+    categories: [Ecommerce]
+    patterns:
+      - {kind: cookie, key: _shopify_essential}
+      - {kind: cookie, key: _shopify_analytics}
+      - {kind: cookie, key: _shopify_marketing}
+      - {kind: script_host, value: '^shop\.app$', weight: 0.7}

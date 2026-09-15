@@ -1,0 +1,125 @@
+technologies:
+  - name: Jetpack
+    categories: [WordPress plugins]
+    patterns:
+      - {kind: script_host, value: '^(stats|i[0-3]|c0)\.wp\.com$'}
+      - {kind: link_host, value: '^(stats|i[0-3]|c0)\.wp\.com$'}
+  - name: Squarespace
+    categories: [CMS]
+    patterns:
+      - {kind: script_host, value: '(^|\.)(squarespace\.com|sqspcdn\.com|squarespace-cdn\.com)$'}
+      - {kind: link_host, value: '(^|\.)(squarespace\.com|sqspcdn\.com|squarespace-cdn\.com)$'}
+      - {kind: robots_line, value: '^#\s*Squarespace Robots Txt'}
+  - name: Adobe Fonts
+    categories: [Font scripts]
+    patterns:
+      - {kind: script_host, value: '^(use|p)\.typekit\.net$'}
+      - {kind: link_host, value: '^(use|p)\.typekit\.net$'}
+  - name: Cloudflare Browser Insights
+    categories: [Analytics, RUM]
+    patterns:
+      - {kind: script_host, value: '^static\.cloudflareinsights\.com$'}
+  - name: Google Maps
+    categories: [Maps]
+    patterns:
+      - {kind: script_host, value: '^maps\.(googleapis|gstatic)\.com$'}
+      - {kind: link_host, value: '^maps\.(googleapis|gstatic)\.com$'}
+      - {kind: url_path, value: '//(www\.)?google\.[a-z.]+/maps/embed'}
+  - name: reCAPTCHA
+    categories: [Security]
+    patterns:
+      - {kind: script_src, value: '//(www\.)?(google|recaptcha)\.(com|net)/recaptcha/'}
+  - name: Google Hosted Libraries
+    categories: [CDN]
+    patterns:
+      - {kind: script_host, value: '^ajax\.googleapis\.com$'}
+      - {kind: link_host, value: '^ajax\.googleapis\.com$'}
+  - name: Google Font API
+    categories: [Font scripts]
+    patterns:
+      - {kind: link_host, value: '^fonts\.(googleapis|gstatic)\.com$'}
+  - name: Webflow
+    categories: [Page builders]
+    patterns:
+      - {kind: script_host, value: '(^|\.)website-files\.com$'}
+      - {kind: link_host, value: '(^|\.)website-files\.com$'}
+  - name: CookieYes
+    categories: [Cookie compliance]
+    patterns:
+      - {kind: script_host, value: '(^|\.)cdn-cookieyes\.com$'}
+  - name: UserWay
+    categories: [Accessibility]
+    patterns:
+      - {kind: script_host, value: '^cdn\.userway\.org$'}
+  - name: Elfsight
+    categories: [Widgets]
+    patterns:
+      - {kind: script_host, value: '(^|\.)elfsight(cdn)?\.com$'}
+  - name: Facebook Pixel
+    categories: [Analytics]
+    patterns:
+      - {kind: script_src, value: 'connect\.facebook\.net/[\w-]+/fbevents\.js'}
+      - {kind: url_path, value: '//www\.facebook\.com/tr\?'}
+  - name: Linkedin Insight Tag
+    categories: [Analytics]
+    patterns:
+      - {kind: script_host, value: '^snap\.licdn\.com$'}
+      - {kind: url_path, value: '//px\.ads\.linkedin\.com/collect'}
+  - name: Hotjar
+    categories: [Analytics]
+    patterns:
+      - {kind: script_host, value: '^static\.hotjar\.com$'}
+      - {kind: csp_host, value: '(^|\.)hotjar\.com$'}
+  - name: HighLevel
+    categories: [Marketing automation, CRM]
+    patterns:
+      - {kind: script_host, value: '(^|\.)(msgsndr|leadconnectorhq)\.com$'}
+  - name: Supabase
+    categories: [Development]
+    patterns:
+      - {kind: script_host, value: '\.supabase\.co$'}
+      - {kind: csp_host, value: '\.supabase\.co$'}
+  - name: AMP
+    categories: [JavaScript frameworks]
+    patterns:
+      - {kind: script_host, value: '^cdn\.ampproject\.org$'}
+  - name: Google Analytics
+    categories: [Analytics]
+    patterns:
+      - {kind: script_host, value: '^(www|ssl)\.google-analytics\.com$'}
+      - {kind: csp_host, value: '(^|\.)google-analytics\.com$'}
+  - name: Vimeo
+    categories: [Video players]
+    patterns:
+      - {kind: link_host, value: '^player\.vimeo\.com$'}
+  - name: Houzz
+    categories: [Widgets]
+    website: https://www.houzz.com
+    patterns:
+      - {kind: script_host, value: '^st\.hzcdn\.com$'}
+  - name: Microsoft Clarity
+    categories: [Analytics]
+    patterns:
+      - {kind: script_host, value: '(^|\.)clarity\.ms$'}
+
+  - name: WordPress
+    categories: [CMS, Blogs]
+    patterns:
+      - {kind: robots_line, value: '^Disallow:\s*/wp-admin/?\s*$', weight: 0.8}
+      - {kind: http_header, key: x-nginx-cache, value: '^WordPress$', weight: 0.8}
+  - name: Yoast SEO
+    categories: [SEO, WordPress plugins]
+    patterns:
+      - {kind: robots_line, value: '^#\s*START YOAST BLOCK'}
+  - name: WPForms
+    categories: [WordPress plugins, Form builders]
+    patterns:
+      - {kind: robots_line, value: '^#\s*START WPFORMS BLOCK'}
+  - name: WooCommerce
+    categories: [Ecommerce, WordPress plugins]
+    patterns:
+      - {kind: robots_line, value: 'wp-content/uploads/woocommerce_uploads'}
+  - name: LayerSlider
+    categories: [Widgets]
+    patterns:
+      - {kind: meta, key: generator, value: '^Powered by LayerSlider ([\d.]+)', version: '\1'}
