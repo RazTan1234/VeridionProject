@@ -1,94 +1,77 @@
 import argparse
 import logging
 import sys
+from pathlib import Path
 
 import pyarrow.parquet as pq
 
 from techdetect import config, detect, external, extract, fetch, report, signatures
 
-
-def load_domains(path) -> list[str]:
-    table = pq.read_table(path)
-    return table.column("root_domain").to_pylist()
+PATH_OPTIONS = {
+    "raw_dir": ("--raw-dir", config.RAW_DIR),
+    "signals": ("--signals", config.SIGNALS_DIR / "signals.jsonl"),
+    "signatures": ("--signatures", config.SIGNATURES_DIR),
+    "detections": ("--detections", config.DETECTIONS_DIR / "detections.jsonl"),
+    "reports_dir": ("--reports-dir", config.REPORTS_DIR),
+    "ground_truth": ("--ground-truth", config.VALIDATION_FILE),
+}
 
 
 def command_fetch(args) -> int:
-    domains = load_domains(args.input)
-    if args.limit:
-        domains = domains[: args.limit]
-    logging.info("fetching %d domains into %s", len(domains), args.raw_dir)
+    domains = pq.read_table(args.input).column("root_domain").to_pylist()[: args.limit]
     return fetch.run_fetch(domains, args.raw_dir, refresh=set(args.refresh or []))
 
 
 def command_signatures(args) -> int:
     if args.sync:
-        stats = external.run_sync(config.EXTERNAL_SIGNATURES_DIR)
-        for key, value in sorted(stats.items()):
-            logging.info("  %-36s %d", key, value)
-    loaded = signatures.load_signatures(args.signatures)
-    for key, value in sorted(signatures.describe(loaded).items()):
-        logging.info("  %-36s %d", key, value)
+        external.run_sync(config.EXTERNAL_SIGNATURES_DIR)
+    for key, value in sorted(signatures.describe(signatures.load_signatures(args.signatures)).items()):
+        logging.info("  %-28s %d", key, value)
     return 0
 
 
-def command_extract(args) -> int:
-    logging.info("extracting signals from %s", args.raw_dir)
-    return extract.run_extract(args.raw_dir, args.signals)
-
-
-def command_detect(args) -> int:
-    logging.info("detecting with signatures from %s", args.signatures)
-    return detect.run_detect(args.signals, args.signatures, args.detections)
-
-
-def command_report(args) -> int:
-    logging.info("writing report into %s", args.reports_dir)
-    return report.run_report(args.detections, args.raw_dir, args.reports_dir)
+COMMANDS = {
+    "fetch": ("download raw data for every domain", command_fetch, ["raw_dir"]),
+    "signatures": ("sync and inspect signature sources", command_signatures, ["signatures"]),
+    "extract": ("turn raw data into signals", lambda args: extract.run_extract(args.raw_dir, args.signals), ["raw_dir", "signals"]),
+    "detect": (
+        "match signals against signatures",
+        lambda args: detect.run_detect(args.signals, args.signatures, args.detections, args.raw_dir),
+        ["signals", "signatures", "detections", "raw_dir"],
+    ),
+    "report": (
+        "write final output and metrics",
+        lambda args: report.run_report(args.detections, args.raw_dir, args.reports_dir),
+        ["detections", "raw_dir", "reports_dir"],
+    ),
+    "validate": (
+        "score detections against the manual ground truth",
+        lambda args: max(report.run_validate(args.detections, args.ground_truth, args.reports_dir, threshold) for threshold in (0.0, 0.8)),
+        ["detections", "ground_truth", "reports_dir"],
+    ),
+}
 
 
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(prog="techdetect")
     parser.add_argument("--verbose", action="store_true")
     subparsers = parser.add_subparsers(dest="command", required=True)
-
-    fetch_parser = subparsers.add_parser("fetch", help="download raw data for every domain")
-    fetch_parser.add_argument("--input", default=config.INPUT_PARQUET)
-    fetch_parser.add_argument("--raw-dir", dest="raw_dir", default=config.RAW_DIR)
-    fetch_parser.add_argument("--limit", type=int, default=None)
-    fetch_parser.add_argument("--refresh", nargs="*", choices=["home", "dns", "tls"])
-    fetch_parser.set_defaults(handler=command_fetch)
-
-    signatures_parser = subparsers.add_parser("signatures", help="sync and inspect signature sources")
-    signatures_parser.add_argument("--sync", action="store_true")
-    signatures_parser.add_argument("--signatures", default=config.SIGNATURES_DIR)
-    signatures_parser.set_defaults(handler=command_signatures)
-
-    extract_parser = subparsers.add_parser("extract", help="turn raw data into signals")
-    extract_parser.add_argument("--raw-dir", dest="raw_dir", default=config.RAW_DIR)
-    extract_parser.add_argument("--signals", default=config.SIGNALS_DIR / "signals.jsonl")
-    extract_parser.set_defaults(handler=command_extract)
-
-    detect_parser = subparsers.add_parser("detect", help="match signals against signatures")
-    detect_parser.add_argument("--signals", default=config.SIGNALS_DIR / "signals.jsonl")
-    detect_parser.add_argument("--signatures", default=config.SIGNATURES_DIR)
-    detect_parser.add_argument("--detections", default=config.DETECTIONS_DIR / "detections.jsonl")
-    detect_parser.set_defaults(handler=command_detect)
-
-    report_parser = subparsers.add_parser("report", help="write final output and metrics")
-    report_parser.add_argument("--detections", default=config.DETECTIONS_DIR / "detections.jsonl")
-    report_parser.add_argument("--raw-dir", dest="raw_dir", default=config.RAW_DIR)
-    report_parser.add_argument("--reports-dir", dest="reports_dir", default=config.REPORTS_DIR)
-    report_parser.set_defaults(handler=command_report)
-
+    for name, (description, handler, options) in COMMANDS.items():
+        command = subparsers.add_parser(name, help=description)
+        for option in options:
+            flag, default = PATH_OPTIONS[option]
+            command.add_argument(flag, dest=option, type=Path, default=default)
+        command.set_defaults(handler=handler)
+    subparsers.choices["fetch"].add_argument("--input", type=Path, default=config.INPUT_PARQUET)
+    subparsers.choices["fetch"].add_argument("--limit", type=int)
+    subparsers.choices["fetch"].add_argument("--refresh", nargs="*", choices=["home", "dns", "tls"])
+    subparsers.choices["signatures"].add_argument("--sync", action="store_true")
     return parser
 
 
 def main(argv: list[str] | None = None) -> int:
     args = build_parser().parse_args(argv)
-    logging.basicConfig(
-        level=logging.DEBUG if args.verbose else logging.INFO,
-        format="%(asctime)s %(levelname)s %(message)s",
-    )
+    logging.basicConfig(level=logging.DEBUG if args.verbose else logging.INFO, format="%(asctime)s %(levelname)s %(message)s")
     logging.getLogger("httpx").setLevel(logging.WARNING)
     return args.handler(args)
 

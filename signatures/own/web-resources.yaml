@@ -6,6 +6,7 @@ technologies:
       - {kind: link_host, value: '^(stats|i[0-3]|c0)\.wp\.com$'}
   - name: Squarespace
     categories: [CMS]
+    excludes: [Stimulus, parallax.js]
     patterns:
       - {kind: script_host, value: '(^|\.)(squarespace\.com|sqspcdn\.com|squarespace-cdn\.com)$'}
       - {kind: link_host, value: '(^|\.)(squarespace\.com|sqspcdn\.com|squarespace-cdn\.com)$'}

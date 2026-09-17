@@ -1,0 +1,40 @@
+domains:
+  - domain: somalidisablesupport.com
+    present: [WordPress, jQuery, Elementor, Hostgator, Jetpack, Apache HTTP Server, Endurance Page Cache, Yoast SEO, Astra, Akismet, Jetpack Boost, MonsterInsights, OptinMonster, Google Font API, Google Search Console, "Let's Encrypt", Mailcheck, jQuery Migrate, punycode, Open Graph, Priority Hints, RSS, WPForms, jQuery UI]
+    unverifiable: [MySQL, PHP, Google Analytics]
+
+  - domain: trs-energycontrol.de
+    present: [Wix, Google Cloud CDN, HSTS, HTTP/3, "Let's Encrypt", React, Lodash, Sentry, Open Graph, Priority Hints, core-js, Fastly, Varnish]
+    unverifiable: [Google Cloud]
+
+  - domain: largsbaychiropractic.com.au
+    present: [Squarespace, Cloudflare, Cloudflare DNS, HSTS, Microsoft 365, Google Maps, GoDaddy, Cart Functionality, Open Graph, Priority Hints]
+    unverifiable: [reCAPTCHA]
+
+  - domain: herbalwise.ie
+    present: [Cloudflare, Shopify, Google Search Console, HSTS, HTTP/3, "Let's Encrypt", American Express, Apple Pay, Google Pay, Klarna Checkout, Mastercard, PayPal, Shop Pay, Visa, Cart Functionality, Open Graph, Zotabox, Titan Email, Blacknight]
+    unverifiable: [Google Cloud, hCaptcha]
+
+  - domain: huberautomotive.com
+    present: [Dealer.com, Akamai, HSTS, Nginx, jQuery, Facebook Pixel, Bing Webmaster Tools, Google Search Console, "Let's Encrypt", Intermedia, Mimecast, React Redux, Redux, jQuery UI, Open Graph, Priority Hints, RSS, Akamai mPulse, Google Tag Manager, React, LaunchDarkly]
+    unverifiable: [Bootstrap, Boomerang, reCAPTCHA]
+
+  - domain: disneystore.com
+    present: [Akamai, Cloudflare, Salesforce Commerce Cloud, Google Search Console, Akamai Bot Manager, HSTS, HTTP/3, reCAPTCHA, "Let's Encrypt", Salesforce, Cloudflare Browser Insights, OneTrust, Salesforce Interaction Studio, Zendesk, Cart Functionality, PWA, Priority Hints, Akamai mPulse, Adobe Experience Platform Launch, Queue-it, Fonts.com]
+    unverifiable: [Boomerang]
+
+  - domain: fisherinvestments.com
+    present: [Akamai, Proofpoint, Salesforce, Salesforce Marketing Cloud Email Studio, Google Search Console, DigiCert, Atlassian Cloud, KnowBe4, Microsoft 365]
+    unverifiable: []
+
+  - domain: lojatatical.com.br
+    present: [GoCache, Rackspace Email, RequireJS, Google Maps, Google Font API, "Let's Encrypt", Google Analytics, Google Search Console, Google Tag Manager, Google Workspace, PHP, Cart Functionality, Magento, OWL Carousel, Swiper, WhatsApp Business Chat]
+    unverifiable: [Bootstrap, MySQL, jQuery, Facebook Pixel]
+
+  - domain: imgs.co.jp
+    present: [Akamai Bot Manager, Amazon ALB, Google Tag Manager, Akamai, Apache HTTP Server, Google Analytics, AWS Certificate Manager, Google Search Console, Amazon Route 53, jQuery, Amazon Web Services, Adobe Experience Manager, Open Graph]
+    unverifiable: [Java]
+
+  - domain: davidloeppke.com
+    present: [HSTS, OpenResty, Varnish, X-Clacks-Overhead, "Let's Encrypt", Google Analytics, Google Tag Manager, Open Graph, Stimulus, jQuery-pjax, Ruby on Rails, Turbo, Zoogle]
+    unverifiable: [Nginx, Ruby, jQuery]

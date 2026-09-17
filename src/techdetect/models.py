@@ -32,16 +32,13 @@ class SignalKind(str, Enum):
     DNS_RECORD = "dns_record"
     TLS_ISSUER = "tls_issuer"
     TLS_SUBJECT = "tls_subject"
-    JS_GLOBAL = "js_global"
     DOM = "dom"
 
 
 class Tier(str, Enum):
     HTTP = "http"
-    SUBRESOURCE = "subresource"
     DNS = "dns"
     TLS = "tls"
-    BROWSER = "browser"
 
 
 class Attempt(BaseModel):
@@ -88,20 +85,20 @@ class Signal(BaseModel):
 
 class Evidence(BaseModel):
     signature_id: str
-    signature_source: Literal["own", "external"]
-    signal_kind: SignalKind
-    document_id: str
-    observation_id: str
-    location: str
+    signature_source: Literal["own", "external", "inferred"]
+    signal_kind: SignalKind | None = None
+    document_id: str | None = None
+    observation_id: str | None = None
+    location: str | None = None
     snippets: list[str] = []
     matched_pattern: str | None = None
+    implied_by: str | None = None
     weight: float
 
 
 class Detection(BaseModel):
     domain: str
     technology: str
-    name_source: Literal["canonical", "derived"] = "canonical"
     categories: list[str] = []
     version: str | None = None
     version_source: str | None = None

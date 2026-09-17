@@ -6,7 +6,7 @@ import regex
 import yaml
 from selectolax.lexbor import LexborHTMLParser
 
-from techdetect.models import Signature, SignalKind
+from techdetect.models import Pattern, Signature, SignalKind
 from techdetect.store import read_records
 
 EXTERNAL_FILE = "technologies.jsonl"
@@ -17,39 +17,31 @@ class SignatureError(ValueError):
     pass
 
 
-def slug(name: str) -> str:
-    return regex.sub(r"[^a-z0-9]+", "-", name.lower()).strip("-")
-
-
-def pattern_problem(signature: Signature) -> str | None:
-    for pattern in signature.patterns:
-        if pattern.value:
-            try:
-                regex.compile(pattern.value, regex.IGNORECASE)
-            except regex.error as error:
-                return f"invalid regex {pattern.value!r}: {error}"
-        if pattern.kind is SignalKind.DOM:
-            if not pattern.key:
-                return "dom pattern without selector"
-            try:
-                EMPTY_DOCUMENT.css(pattern.key)
-            except Exception as error:
-                return f"invalid selector {pattern.key!r}: {error}"
+def pattern_problem(pattern: Pattern) -> str | None:
+    if pattern.value:
+        try:
+            regex.compile(pattern.value, regex.IGNORECASE)
+        except regex.error as error:
+            return f"invalid regex {pattern.value!r}: {error}"
+    if pattern.kind is SignalKind.DOM:
+        try:
+            EMPTY_DOCUMENT.css(pattern.key or "")
+        except Exception as error:
+            return f"invalid selector {pattern.key!r}: {error}"
     return None
 
 
 def load_own(directory: Path) -> list[Signature]:
     signatures = []
     for path in sorted(Path(directory).glob("*.yaml")):
-        document = yaml.safe_load(path.read_text(encoding="utf-8")) or {}
-        for entry in document.get("technologies") or []:
+        for entry in (yaml.safe_load(path.read_text(encoding="utf-8")) or {}).get("technologies") or []:
             try:
-                signature = Signature(id=f"own:{slug(entry['name'])}", source="own", **entry)
+                slug = regex.sub(r"[^a-z0-9]+", "-", entry["name"].lower()).strip("-")
+                signature = Signature(id=f"own:{slug}", source="own", **entry)
             except Exception as error:
                 raise SignatureError(f"{path.name}: {entry.get('name')}: {error}") from error
-            problem = pattern_problem(signature)
-            if problem:
-                raise SignatureError(f"{path.name}: {signature.name}: {problem}")
+            if problems := [problem for problem in map(pattern_problem, signature.patterns) if problem]:
+                raise SignatureError(f"{path.name}: {signature.name}: {problems[0]}")
             signatures.append(signature)
     return signatures
 
@@ -63,16 +55,13 @@ def load_external(directory: Path) -> list[Signature]:
 
 
 def load_signatures(root: Path) -> list[Signature]:
-    root = Path(root)
-    return load_own(root / "own") + load_external(root / "external")
+    return load_own(Path(root) / "own") + load_external(Path(root) / "external")
 
 
 def describe(signatures: list[Signature]) -> Counter:
-    stats: Counter = Counter()
+    stats = Counter(distinct_names=len({signature.name.lower() for signature in signatures}))
     for signature in signatures:
         stats[f"{signature.source}_technologies"] += 1
-        for pattern in signature.patterns:
-            stats[f"{signature.source}_patterns"] += 1
-            stats[f"kind_{pattern.kind.value}"] += 1
-    stats["distinct_names"] = len({signature.name.lower() for signature in signatures})
+        stats[f"{signature.source}_patterns"] += len(signature.patterns)
+        stats.update(f"kind_{pattern.kind.value}" for pattern in signature.patterns)
     return stats

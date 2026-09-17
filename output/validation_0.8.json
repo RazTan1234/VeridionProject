@@ -1,0 +1,255 @@
+{
+  "summary": {
+    "threshold": 0.8,
+    "domains": 10,
+    "true_positives": 119,
+    "false_positives": 2,
+    "false_negatives": 40,
+    "precision": 0.983,
+    "recall": 0.748
+  },
+  "domains": [
+    {
+      "domain": "somalidisablesupport.com",
+      "true_positives": [
+        "akismet",
+        "apache http server",
+        "astra",
+        "elementor",
+        "endurance page cache",
+        "google font api",
+        "google search console",
+        "hostgator",
+        "jetpack",
+        "jetpack boost",
+        "jquery",
+        "jquery migrate",
+        "jquery ui",
+        "let's encrypt",
+        "mailcheck",
+        "monsterinsights",
+        "optinmonster",
+        "punycode",
+        "wordpress",
+        "wpforms",
+        "yoast seo"
+      ],
+      "false_positives": [],
+      "false_negatives": [
+        "open graph",
+        "priority hints",
+        "rss"
+      ]
+    },
+    {
+      "domain": "trs-energycontrol.de",
+      "true_positives": [
+        "core-js",
+        "fastly",
+        "google cloud cdn",
+        "hsts",
+        "http/3",
+        "let's encrypt",
+        "lodash",
+        "react",
+        "sentry",
+        "varnish",
+        "wix"
+      ],
+      "false_positives": [],
+      "false_negatives": [
+        "open graph",
+        "priority hints"
+      ]
+    },
+    {
+      "domain": "largsbaychiropractic.com.au",
+      "true_positives": [
+        "cloudflare",
+        "cloudflare dns",
+        "godaddy",
+        "google maps",
+        "hsts",
+        "microsoft 365",
+        "squarespace"
+      ],
+      "false_positives": [
+        "squarespace commerce"
+      ],
+      "false_negatives": [
+        "cart functionality",
+        "open graph",
+        "priority hints"
+      ]
+    },
+    {
+      "domain": "herbalwise.ie",
+      "true_positives": [
+        "blacknight",
+        "cloudflare",
+        "google search console",
+        "hsts",
+        "http/3",
+        "let's encrypt",
+        "shopify",
+        "titan email",
+        "zotabox"
+      ],
+      "false_positives": [],
+      "false_negatives": [
+        "american express",
+        "apple pay",
+        "cart functionality",
+        "google pay",
+        "klarna checkout",
+        "mastercard",
+        "open graph",
+        "paypal",
+        "shop pay",
+        "visa"
+      ]
+    },
+    {
+      "domain": "huberautomotive.com",
+      "true_positives": [
+        "akamai",
+        "bing webmaster tools",
+        "dealer.com",
+        "facebook pixel",
+        "google search console",
+        "hsts",
+        "intermedia",
+        "jquery",
+        "jquery ui",
+        "launchdarkly",
+        "let's encrypt",
+        "mimecast",
+        "nginx",
+        "react redux",
+        "redux"
+      ],
+      "false_positives": [],
+      "false_negatives": [
+        "akamai mpulse",
+        "google tag manager",
+        "open graph",
+        "priority hints",
+        "react",
+        "rss"
+      ]
+    },
+    {
+      "domain": "disneystore.com",
+      "true_positives": [
+        "adobe experience platform launch",
+        "akamai",
+        "akamai bot manager",
+        "cloudflare",
+        "cloudflare browser insights",
+        "google search console",
+        "hsts",
+        "http/3",
+        "let's encrypt",
+        "onetrust",
+        "queue-it",
+        "recaptcha",
+        "salesforce",
+        "salesforce commerce cloud",
+        "salesforce interaction studio",
+        "zendesk"
+      ],
+      "false_positives": [],
+      "false_negatives": [
+        "akamai mpulse",
+        "cart functionality",
+        "fonts.com",
+        "priority hints",
+        "pwa"
+      ]
+    },
+    {
+      "domain": "fisherinvestments.com",
+      "true_positives": [
+        "akamai",
+        "atlassian cloud",
+        "digicert",
+        "google search console",
+        "knowbe4",
+        "microsoft 365",
+        "proofpoint",
+        "salesforce",
+        "salesforce marketing cloud email studio"
+      ],
+      "false_positives": [
+        "apple icloud mail"
+      ],
+      "false_negatives": []
+    },
+    {
+      "domain": "lojatatical.com.br",
+      "true_positives": [
+        "gocache",
+        "google analytics",
+        "google font api",
+        "google maps",
+        "google search console",
+        "google tag manager",
+        "google workspace",
+        "let's encrypt",
+        "php",
+        "rackspace email",
+        "requirejs"
+      ],
+      "false_positives": [],
+      "false_negatives": [
+        "cart functionality",
+        "magento",
+        "owl carousel",
+        "swiper",
+        "whatsapp business chat"
+      ]
+    },
+    {
+      "domain": "imgs.co.jp",
+      "true_positives": [
+        "akamai",
+        "akamai bot manager",
+        "amazon alb",
+        "amazon route 53",
+        "amazon web services",
+        "apache http server",
+        "aws certificate manager",
+        "google analytics",
+        "google search console",
+        "google tag manager",
+        "jquery"
+      ],
+      "false_positives": [],
+      "false_negatives": [
+        "adobe experience manager",
+        "open graph"
+      ]
+    },
+    {
+      "domain": "davidloeppke.com",
+      "true_positives": [
+        "google analytics",
+        "google tag manager",
+        "hsts",
+        "let's encrypt",
+        "openresty",
+        "turbo",
+        "varnish",
+        "x-clacks-overhead",
+        "zoogle"
+      ],
+      "false_positives": [],
+      "false_negatives": [
+        "jquery-pjax",
+        "open graph",
+        "ruby on rails",
+        "stimulus"
+      ]
+    }
+  ]
+}

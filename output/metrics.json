@@ -1,0 +1,122 @@
+{
+  "domains": {
+    "total": 200,
+    "with_detections": 195,
+    "home_outcomes": {
+      "content": 155,
+      "challenged": 14,
+      "not_found": 8,
+      "http_error": 8,
+      "origin_error": 7,
+      "error": 7,
+      "parked": 1
+    },
+    "offsite_redirects": 8
+  },
+  "detections": {
+    "total": 2803,
+    "direct": 2588,
+    "inferred": 215,
+    "offsite": 112,
+    "per_domain_median": 13.0,
+    "per_domain_max": 41
+  },
+  "distinct_technologies": {
+    "all": 480,
+    "direct": 464,
+    "confidence_at_least_0.8": 424,
+    "excluding_offsite": 467
+  },
+  "distinct_by_signature_source": {
+    "own_only": 154,
+    "external_only": 221,
+    "both": 89
+  },
+  "distinct_by_tier": {
+    "dns": {
+      "seen": 88,
+      "only_this_tier": 65
+    },
+    "http": {
+      "seen": 386,
+      "only_this_tier": 364
+    },
+    "tls": {
+      "seen": 14,
+      "only_this_tier": 12
+    }
+  },
+  "distinct_by_signal_kind": {
+    "script_src": 146,
+    "wp_rest_namespace": 137,
+    "dom": 92,
+    "dns_record": 88,
+    "http_header": 55,
+    "html_text": 33,
+    "meta": 32,
+    "script_host": 21,
+    "cookie": 15,
+    "tls_issuer": 13,
+    "link_host": 13,
+    "robots_line": 7,
+    "hostname": 4,
+    "url_path": 3,
+    "csp_host": 2,
+    "page_url": 2,
+    "tls_subject": 1
+  },
+  "top_technologies": {
+    "Let's Encrypt": 107,
+    "Open Graph": 102,
+    "jQuery": 99,
+    "PHP": 91,
+    "MySQL": 79,
+    "HTTP/3": 75,
+    "WordPress": 71,
+    "Cloudflare": 64,
+    "Google Font API": 63,
+    "Priority Hints": 61,
+    "HSTS": 60,
+    "Google Search Console": 60,
+    "RSS": 60,
+    "Font Awesome": 56,
+    "jQuery Migrate": 52,
+    "Apache HTTP Server": 46,
+    "Google Tag Manager": 44,
+    "Microsoft 365": 36,
+    "Nginx": 35,
+    "Yoast SEO": 33,
+    "Google Trust Services": 32,
+    "Google Analytics": 31,
+    "GoDaddy": 30,
+    "Cloudflare Bot Management": 28,
+    "jQuery UI": 28,
+    "Google Workspace": 28,
+    "Bootstrap": 26,
+    "Swiper": 22,
+    "Contact Form 7": 22,
+    "Cloudflare DNS": 19
+  },
+  "top_categories": {
+    "WordPress plugins": 397,
+    "JavaScript libraries": 329,
+    "Miscellaneous": 261,
+    "SSL/TLS certificate authorities": 175,
+    "Security": 175,
+    "CDN": 137,
+    "Font scripts": 137,
+    "Hosting": 133,
+    "SEO": 118,
+    "CMS": 110,
+    "Email": 110,
+    "Web servers": 107,
+    "Programming languages": 96,
+    "Page builders": 83,
+    "Blogs": 81,
+    "Databases": 81,
+    "Analytics": 78,
+    "Performance": 73,
+    "Webmail": 70,
+    "PaaS": 46
+  }
+}

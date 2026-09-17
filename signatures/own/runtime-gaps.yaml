@@ -1,0 +1,69 @@
+technologies:
+  - name: Adobe Experience Platform Launch
+    categories: [Tag managers]
+    patterns:
+      - {kind: script_src, value: '//assets\.adobedtm\.com/launch-'}
+  - name: Queue-it
+    categories: [Security]
+    patterns:
+      - {kind: http_header, key: x-queueit-connector}
+      - {kind: script_host, value: '\.queue-it\.net$'}
+  - name: LaunchDarkly
+    categories: [Feature management]
+    patterns:
+      - {kind: script_src, value: '/(launch-darkly|launchdarkly)[/-]([\d.]+)?/?.*(ldclient|launchdarkly)[\w.-]*\.js', version: '\2'}
+  - name: Zotabox
+    categories: [Widgets]
+    patterns:
+      - {kind: script_host, value: '(^|\.)zotabox\.com$'}
+  - name: core-js
+    categories: [JavaScript libraries]
+    patterns:
+      - {kind: script_src, value: '/core-js(?:-bundle)?@([\d.]+)/', version: '\1'}
+  - name: Turbo
+    categories: [JavaScript frameworks]
+    patterns:
+      - {kind: meta, key: 'turbo-*'}
+  - name: Facebook Pixel
+    categories: [Analytics]
+    patterns:
+      - {kind: html_text, value: 'fbq\(\s*[''"]init[''"]'}
+  - name: Fastly
+    categories: [CDN]
+    patterns:
+      - {kind: http_header, key: server-timing, value: '\bfastly'}
+  - name: Varnish
+    categories: [Caching]
+    patterns:
+      - {kind: http_header, key: server-timing, value: '\bvarnish;'}
+  - name: WPForms
+    categories: [WordPress plugins, Form builders]
+    patterns:
+      - {kind: script_src, value: '/wp-content/plugins/wpforms(?:-lite)?/.+\.js(?:\?ver=([\d.]+))?', version: '\1'}
+  - name: jQuery UI
+    categories: [JavaScript libraries]
+    patterns:
+      - {kind: script_src, value: '/wp-includes/js/jquery/ui/[\w.-]+\.js(?:\?ver=([\d.]+))?', version: '\1'}
+  - name: Fonts.com
+    categories: [Font scripts]
+    website: https://www.fonts.com
+    patterns:
+      - {kind: link_host, value: '^fast\.fonts\.net$'}
+  - name: Titan Email
+    categories: [Email]
+    website: https://titan.email
+    patterns:
+      - {kind: dns_record, key: MX, value: '\.titan\.email$'}
+  - name: Blacknight
+    categories: [Hosting]
+    website: https://www.blacknight.com
+    patterns:
+      - {kind: dns_record, key: NS, value: '\.blacknight\.com$'}
+      - {kind: dns_record, key: TXT, value: 'include:spf\.blacknight\.ie'}
+  - name: Zoogle
+    categories: [Page builders]
+    website: https://www.zoogle.com
+    patterns:
+      - {kind: dns_record, key: NS, value: '\.sitezoogle\.com$'}
+      - {kind: link_host, value: '(^|\.)(zoogletools\.com|bndzgl\.com)$'}
+      - {kind: script_host, value: '(^|\.)bndzgl\.com$'}

@@ -5,7 +5,9 @@ INPUT := data/input/domains.snappy.parquet
 MANIFEST := data/raw/manifest.jsonl
 SIGNALS := data/signals/signals.jsonl
 DETECTIONS := data/detections/detections.jsonl
-REPORT := data/reports/technologies.parquet
+REPORT := output/technologies.json
+VALIDATION := output/validation_0.8.json
+GROUND_TRUTH := validation/ground_truth.yaml
 
 EXTERNAL_SIGNATURES := signatures/external/technologies.jsonl
 SIGNATURE_FILES := $(wildcard signatures/own/*.yaml) $(EXTERNAL_SIGNATURES)
@@ -15,7 +17,7 @@ FETCH_ARGS := $(if $(LIMIT),--limit $(LIMIT),)
 
 .DEFAULT_GOAL := report
 
-.PHONY: install signatures fetch extract detect report test clean clean-raw
+.PHONY: install signatures fetch extract detect report validate test clean clean-raw
 
 install:
 	.venv/bin/pip install -e ".[dev]"
@@ -38,16 +40,20 @@ $(DETECTIONS): $(SIGNALS) $(SIGNATURE_FILES)
 $(REPORT): $(DETECTIONS)
 	$(TECHDETECT) report
 
+$(VALIDATION): $(DETECTIONS) $(GROUND_TRUTH)
+	$(TECHDETECT) validate
+
 fetch: $(MANIFEST)
 extract: $(SIGNALS)
 detect: $(DETECTIONS)
 report: $(REPORT)
+validate: $(VALIDATION)
 
 test:
 	$(PYTEST) -q
 
 clean:
-	rm -rf data/signals data/detections data/reports
+	rm -rf data/signals data/detections output
 
 clean-raw:
 	rm -rf data/raw

@@ -1,6 +1,7 @@
 technologies:
   - name: Wix
     categories: [CMS, Blogs]
+    excludes: [WebsiteBuilder, Wix eCommerce]
     patterns:
       - {kind: http_header, key: server, value: '^Pepyaka'}
       - {kind: http_header, key: glb-x-seen-by, weight: 0.6}
